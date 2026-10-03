@@ -74,8 +74,110 @@ const modalClientName =
 const modalContent =
     document.getElementById("modalContent");
 
+    // ========================================
+// CRM VIEWS
+// ========================================
+
+const dashboardNavButton =
+    document.getElementById("dashboardNavButton");
+
+const enquiriesNavButton =
+    document.getElementById("enquiriesNavButton");
+
+const dashboardView =
+    document.getElementById("dashboardView");
+
+const enquiriesView =
+    document.getElementById("enquiriesView");
+
+const allEnquiriesTableBody =
+    document.getElementById("allEnquiriesTableBody");
+
+const enquirySearchInput =
+    document.getElementById("enquirySearchInput");
+
+const allEnquiriesStatusFilter =
+    document.getElementById("allEnquiriesStatusFilter");
+
+const enquiryResultCount =
+    document.getElementById("enquiryResultCount");
+
 
 let enquiries = [];
+
+// ========================================
+// CRM VIEW NAVIGATION
+// ========================================
+
+function showCRMView(viewName) {
+
+    if (
+        !dashboardView ||
+        !enquiriesView
+    ) {
+        return;
+    }
+
+
+    const showDashboard =
+        viewName === "dashboard";
+
+
+    dashboardView.classList.toggle(
+        "active",
+        showDashboard
+    );
+
+    enquiriesView.classList.toggle(
+        "active",
+        !showDashboard
+    );
+
+
+    if (dashboardNavButton) {
+
+        dashboardNavButton.classList.toggle(
+            "active",
+            showDashboard
+        );
+
+    }
+
+
+    if (enquiriesNavButton) {
+
+        enquiriesNavButton.classList.toggle(
+            "active",
+            !showDashboard
+        );
+
+    }
+
+}
+
+
+if (dashboardNavButton) {
+
+    dashboardNavButton.addEventListener(
+        "click",
+        () => {
+            showCRMView("dashboard");
+        }
+    );
+
+}
+
+
+if (enquiriesNavButton) {
+
+    enquiriesNavButton.addEventListener(
+        "click",
+        () => {
+            showCRMView("enquiries");
+        }
+    );
+
+}
 
 
 // ========================================
@@ -139,7 +241,9 @@ function loadEnquiries() {
 
             updateStats();
 
-            renderEnquiries();
+renderEnquiries();
+
+renderAllEnquiries();
 
         },
 
@@ -269,6 +373,113 @@ function renderEnquiries() {
 
 }
 
+// ========================================
+// RENDER ALL ENQUIRIES
+// ========================================
+
+function renderAllEnquiries() {
+
+    if (!allEnquiriesTableBody) {
+        return;
+    }
+
+
+    const searchTerm =
+        enquirySearchInput
+            ? enquirySearchInput.value
+                .trim()
+                .toLowerCase()
+            : "";
+
+
+    const selectedStatus =
+        allEnquiriesStatusFilter
+            ? allEnquiriesStatusFilter.value
+            : "All";
+
+
+    const filteredEnquiries =
+        enquiries.filter(
+            enquiry => {
+
+                const matchesStatus =
+                    selectedStatus === "All" ||
+                    enquiry.status === selectedStatus;
+
+
+                const searchableText = [
+                    enquiry.name,
+                    enquiry.business,
+                    enquiry.email,
+                    enquiry.phone,
+                    ...(Array.isArray(enquiry.services)
+                        ? enquiry.services
+                        : [])
+                ]
+                    .filter(Boolean)
+                    .join(" ")
+                    .toLowerCase();
+
+
+                const matchesSearch =
+                    !searchTerm ||
+                    searchableText.includes(
+                        searchTerm
+                    );
+
+
+                return (
+                    matchesStatus &&
+                    matchesSearch
+                );
+
+            }
+        );
+
+
+    if (enquiryResultCount) {
+
+        enquiryResultCount.textContent =
+            `${filteredEnquiries.length} ${
+                filteredEnquiries.length === 1
+                    ? "enquiry"
+                    : "enquiries"
+            }`;
+
+    }
+
+
+    if (filteredEnquiries.length === 0) {
+
+        allEnquiriesTableBody.innerHTML = `
+            <tr>
+                <td
+                    colspan="6"
+                    class="crm-empty-row"
+                >
+                    No enquiries found.
+                </td>
+            </tr>
+        `;
+
+        return;
+
+    }
+
+
+    allEnquiriesTableBody.innerHTML =
+        filteredEnquiries
+            .map(
+                enquiry =>
+                    createEnquiryRow(enquiry)
+            )
+            .join("");
+
+
+    attachViewButtons();
+
+}
+
 
 // ========================================
 // CREATE TABLE ROW
@@ -370,6 +581,29 @@ statusFilter.addEventListener(
     "change",
     renderEnquiries
 );
+
+// ========================================
+// ALL ENQUIRIES SEARCH + FILTER
+// ========================================
+
+if (enquirySearchInput) {
+
+    enquirySearchInput.addEventListener(
+        "input",
+        renderAllEnquiries
+    );
+
+}
+
+
+if (allEnquiriesStatusFilter) {
+
+    allEnquiriesStatusFilter.addEventListener(
+        "change",
+        renderAllEnquiries
+    );
+
+}
 
 
 // ========================================
@@ -1555,3 +1789,4 @@ function escapeHTML(value) {
         .replaceAll("'", "&#039;");
 
 }
+

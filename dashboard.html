@@ -77,38 +77,40 @@
 
 
                 <button
-                    class="crm-nav-item active"
-                    type="button"
-                >
+    class="crm-nav-item active"
+    id="dashboardNavButton"
+    type="button"
+>
 
-                    <span class="crm-nav-icon">
-                        ◫
-                    </span>
+    <span class="crm-nav-icon">
+        ◫
+    </span>
 
-                    Dashboard
+    Dashboard
 
-                </button>
+</button>
 
 
                 <button
-                    class="crm-nav-item"
-                    type="button"
-                >
+    class="crm-nav-item"
+    id="enquiriesNavButton"
+    type="button"
+>
 
-                    <span class="crm-nav-icon">
-                        ◎
-                    </span>
+    <span class="crm-nav-icon">
+        ◎
+    </span>
 
-                    Enquiries
+    Enquiries
 
-                    <span
-                        class="crm-nav-count"
-                        id="sidebarNewCount"
-                    >
-                        0
-                    </span>
+    <span
+        class="crm-nav-count"
+        id="sidebarNewCount"
+    >
+        0
+    </span>
 
-                </button>
+</button>
 
 
                 <button
@@ -252,7 +254,10 @@
 
             </header>
 
-
+<section
+    id="dashboardView"
+    class="crm-view active"
+>
 
             <!-- =========================
                  STAT CARDS
@@ -480,10 +485,180 @@
 
                     </table>
 
-                </div>
-
+                                </div>
 
             </section>
+
+        </section>
+        <!-- END DASHBOARD VIEW -->
+
+        <!-- =========================
+     ENQUIRIES VIEW
+========================== -->
+
+<section
+    id="enquiriesView"
+    class="crm-view"
+>
+
+    <div class="crm-view-header">
+
+        <div>
+
+            <p class="crm-eyebrow">
+                LEAD MANAGEMENT
+            </p>
+
+            <h1>
+                Enquiries
+            </h1>
+
+            <p class="crm-header-description">
+                View, search and manage all project enquiries.
+            </p>
+
+        </div>
+
+    </div>
+
+    <!-- ENQUIRY CONTROLS -->
+
+<div class="crm-enquiry-controls">
+
+    <div class="crm-enquiry-search">
+
+        <input
+            type="search"
+            id="enquirySearchInput"
+            placeholder="Search name, business or email..."
+            autocomplete="off"
+        >
+
+    </div>
+
+
+    <div class="crm-enquiry-filter">
+
+        <select id="allEnquiriesStatusFilter">
+
+            <option value="All">
+                All Statuses
+            </option>
+
+            <option value="New">
+                New
+            </option>
+
+            <option value="Contacted">
+                Contacted
+            </option>
+
+            <option value="Quote Sent">
+                Quote Sent
+            </option>
+
+            <option value="Won">
+                Won
+            </option>
+
+            <option value="Lost">
+                Lost
+            </option>
+
+        </select>
+
+    </div>
+
+</div>
+
+<!-- ALL ENQUIRIES TABLE -->
+
+<section class="crm-enquiries-panel crm-all-enquiries-panel">
+
+    <div class="crm-panel-header">
+
+        <div>
+
+            <p class="crm-panel-label">
+                ALL LEADS
+            </p>
+
+            <h2>
+                Project Enquiries
+            </h2>
+
+        </div>
+
+        <span
+            class="crm-enquiry-result-count"
+            id="enquiryResultCount"
+        >
+            0 enquiries
+        </span>
+
+    </div>
+
+
+    <div class="crm-table-wrapper">
+
+        <table class="crm-table">
+
+            <thead>
+
+                <tr>
+
+                    <th>
+                        CLIENT
+                    </th>
+
+                    <th>
+                        SERVICES
+                    </th>
+
+                    <th>
+                        BUDGET
+                    </th>
+
+                    <th>
+                        RECEIVED
+                    </th>
+
+                    <th>
+                        STATUS
+                    </th>
+
+                    <th>
+                        ACTION
+                    </th>
+
+                </tr>
+
+            </thead>
+
+
+            <tbody id="allEnquiriesTableBody">
+
+                <tr>
+
+                    <td
+                        colspan="6"
+                        class="crm-loading-row"
+                    >
+                        Loading enquiries...
+                    </td>
+
+                </tr>
+
+            </tbody>
+
+        </table>
+
+    </div>
+
+</section>
+
+</section>
+<!-- END ENQUIRIES VIEW -->
 
 
         </main>

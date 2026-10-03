@@ -513,31 +513,280 @@ button {
    RESPONSIVE
 ======================================== */
 
+.mobile-quote-button {
+    display: none;
+}
+
 @media (max-width: 900px) {
 
     .site-header {
         height: 78px;
     }
 
+    .nav-container {
+        position: relative;
+    }
+
     .site-logo {
         width: 155px;
     }
 
-    .main-nav,
+
+    /* ========================================
+       MOBILE NAVIGATION
+    ======================================== */
+
+    .main-nav {
+        position: fixed;
+
+        top: 78px;
+        left: 0;
+        right: 0;
+
+        z-index: 999;
+
+        display: flex;
+        flex-direction: column;
+        align-items: stretch;
+
+        padding: 22px 5% 28px;
+
+        background:
+            rgba(4, 10, 18, 0.98);
+
+        border-top:
+            1px solid rgba(255,255,255,0.06);
+
+        border-bottom:
+            1px solid rgba(0,217,255,0.10);
+
+        box-shadow:
+            0 25px 60px rgba(0,0,0,0.45);
+
+        backdrop-filter: blur(18px);
+        -webkit-backdrop-filter: blur(18px);
+
+        opacity: 0;
+        visibility: hidden;
+
+        transform: translateY(-15px);
+
+        pointer-events: none;
+
+        transition:
+            opacity 0.3s ease,
+            transform 0.3s ease,
+            visibility 0.3s ease;
+    }
+
+
+    /* MENU OPEN */
+
+    .main-nav.active {
+        opacity: 1;
+        visibility: visible;
+
+        transform: translateY(0);
+
+        pointer-events: auto;
+    }
+
+
+    /* MOBILE LINKS */
+
+    .main-nav .nav-link {
+        width: 100%;
+
+        padding: 18px 4px;
+
+        border-bottom:
+            1px solid rgba(255,255,255,0.055);
+
+        color: #dce5ee;
+
+        font-size: 15px;
+        font-weight: 600;
+
+        letter-spacing: 0.4px;
+    }
+
+    .main-nav .nav-link:last-child {
+        border-bottom: 0;
+    }
+
+    .main-nav .nav-link:hover,
+    .main-nav .nav-link.active {
+        color: #00d9ff;
+    }
+
+    /* REMOVE DESKTOP ACTIVE-LINK LINE ON MOBILE */
+
+.main-nav .nav-link::after {
+    display: none;
+}
+
+/* MOBILE QUOTE BUTTON */
+
+.mobile-quote-button {
+    width: 100%;
+
+    margin-top: 22px;
+    padding: 17px 20px;
+
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+
+    border-radius: 6px;
+
+    background:
+        linear-gradient(
+            135deg,
+            #0875ff,
+            #00d9ff
+        );
+
+    color: #ffffff;
+
+    font-size: 14px;
+    font-weight: 700;
+
+    letter-spacing: 0.3px;
+
+    box-shadow:
+        0 12px 35px rgba(0, 126, 255, 0.18);
+
+    transition:
+        transform 0.25s ease,
+        box-shadow 0.25s ease;
+}
+
+.mobile-quote-button span {
+    font-size: 18px;
+
+    transition:
+        transform 0.25s ease;
+}
+
+.mobile-quote-button:hover {
+    transform: translateY(-2px);
+
+    box-shadow:
+        0 16px 40px rgba(0, 174, 255, 0.28);
+}
+
+.mobile-quote-button:hover span {
+    transform: translateX(4px);
+}
+
+
+    /* HIDE DESKTOP QUOTE BUTTON */
+
     .quote-button {
         display: none;
     }
 
+
+    /* ========================================
+       HAMBURGER
+    ======================================== */
+
     .menu-toggle {
+        position: relative;
+
+        z-index: 1001;
+
         display: block;
+
+        width: 44px;
+        height: 44px;
+
+        padding: 0;
+
+        border:
+            1px solid rgba(255,255,255,0.08);
+
+        border-radius: 6px;
+
+        background:
+            rgba(255,255,255,0.025);
     }
+
+    .menu-toggle span {
+        position: absolute;
+
+        left: 50%;
+
+        width: 22px;
+        height: 2px;
+
+        margin: 0;
+
+        border-radius: 10px;
+
+        background: #ffffff;
+
+        transform: translateX(-50%);
+
+        transition:
+            top 0.3s ease,
+            transform 0.3s ease,
+            opacity 0.2s ease,
+            background 0.3s ease;
+    }
+
+    .menu-toggle span:nth-child(1) {
+        top: 13px;
+    }
+
+    .menu-toggle span:nth-child(2) {
+        top: 20px;
+    }
+
+    .menu-toggle span:nth-child(3) {
+        top: 27px;
+    }
+
+
+    /* HAMBURGER → X */
+
+    .menu-toggle.active span:nth-child(1) {
+        top: 20px;
+
+        transform:
+            translateX(-50%)
+            rotate(45deg);
+
+        background: #00d9ff;
+    }
+
+    .menu-toggle.active span:nth-child(2) {
+        opacity: 0;
+    }
+
+    .menu-toggle.active span:nth-child(3) {
+        top: 20px;
+
+        transform:
+            translateX(-50%)
+            rotate(-45deg);
+
+        background: #00d9ff;
+    }
+
+
+    /* ========================================
+       HERO MOBILE
+    ======================================== */
 
     .hero {
         padding-top: 140px;
     }
 
     .hero h1 {
-        font-size: clamp(50px, 12vw, 78px);
+        font-size:
+            clamp(50px, 12vw, 78px);
+
         letter-spacing: -2px;
     }
 
@@ -13444,6 +13693,2937 @@ div small {
     .support-status-panel-header {
         align-items: flex-start;
         flex-direction: column;
+    }
+
+}
+
+/* ========================================
+   FIX QUOTE DROPDOWN OPTIONS
+======================================== */
+
+select option {
+    background: #0b1520;
+    color: #ffffff;
+}
+
+select option:checked {
+    background: #0875ff;
+    color: #ffffff;
+}
+
+/* ========================================
+   SERVICE PAGES - MOBILE NAVIGATION
+======================================== */
+
+
+/* HIDDEN ON DESKTOP */
+
+.service-menu-toggle {
+    display: none;
+}
+
+
+/* ========================================
+   MOBILE
+======================================== */
+
+@media (max-width: 900px) {
+
+    .service-page-header {
+        height: 78px;
+    }
+
+    .service-nav-container {
+        position: relative;
+    }
+
+
+    /* ---------- NAVIGATION PANEL ---------- */
+
+    .service-page-nav {
+        position: fixed;
+
+        top: 78px;
+        left: 0;
+        right: 0;
+
+        z-index: 999;
+
+        display: flex;
+        flex-direction: column;
+        align-items: stretch;
+
+        padding: 22px 5% 28px;
+
+        background: rgba(4, 10, 18, 0.98);
+
+        border-top:
+            1px solid rgba(255,255,255,0.06);
+
+        box-shadow:
+            0 25px 60px rgba(0,0,0,0.45);
+
+        backdrop-filter: blur(18px);
+        -webkit-backdrop-filter: blur(18px);
+
+        opacity: 0;
+        visibility: hidden;
+
+        transform: translateY(-15px);
+
+        pointer-events: none;
+
+        transition:
+            opacity 0.3s ease,
+            transform 0.3s ease,
+            visibility 0.3s ease;
+    }
+
+
+    /* ---------- OPEN MENU ---------- */
+
+    .service-page-nav.active {
+        opacity: 1;
+        visibility: visible;
+
+        transform: translateY(0);
+
+        pointer-events: auto;
+    }
+
+
+    /* ---------- MOBILE LINKS ---------- */
+
+    .service-page-nav a {
+        width: 100%;
+
+        padding: 18px 4px;
+
+        border-bottom:
+            1px solid rgba(255,255,255,0.055);
+
+        color: #dce5ee;
+
+        font-size: 15px;
+        font-weight: 600;
+
+        letter-spacing: 0.4px;
+    }
+
+    .service-page-nav a:last-child {
+        border-bottom: 0;
+    }
+
+    .service-page-nav a:hover {
+        color: #00d9ff;
+    }
+
+    .service-page-nav a::after {
+        display: none;
+    }
+
+
+    /* ---------- HIDE DESKTOP CTA ---------- */
+
+    .service-nav-cta {
+        display: none;
+    }
+
+
+    /* ---------- HAMBURGER ---------- */
+
+    .service-menu-toggle {
+        position: relative;
+
+        z-index: 1001;
+
+        display: block;
+
+        width: 44px;
+        height: 44px;
+
+        padding: 0;
+
+        border:
+            1px solid rgba(255,255,255,0.08);
+
+        border-radius: 6px;
+
+        background:
+            rgba(255,255,255,0.025);
+
+        cursor: pointer;
+    }
+
+    .service-menu-toggle span {
+        position: absolute;
+
+        left: 50%;
+
+        width: 22px;
+        height: 2px;
+
+        margin: 0;
+
+        border-radius: 10px;
+
+        background: #ffffff;
+
+        transform: translateX(-50%);
+
+        transition:
+            top 0.3s ease,
+            transform 0.3s ease,
+            opacity 0.2s ease,
+            background 0.3s ease;
+    }
+
+    .service-menu-toggle span:nth-child(1) {
+        top: 13px;
+    }
+
+    .service-menu-toggle span:nth-child(2) {
+        top: 20px;
+    }
+
+    .service-menu-toggle span:nth-child(3) {
+        top: 27px;
+    }
+
+
+    /* ---------- HAMBURGER TO X ---------- */
+
+    .service-menu-toggle.active span:nth-child(1) {
+        top: 20px;
+
+        transform:
+            translateX(-50%)
+            rotate(45deg);
+
+        background: #00d9ff;
+    }
+
+    .service-menu-toggle.active span:nth-child(2) {
+        opacity: 0;
+    }
+
+    .service-menu-toggle.active span:nth-child(3) {
+        top: 20px;
+
+        transform:
+            translateX(-50%)
+            rotate(-45deg);
+
+        background: #00d9ff;
+    }
+
+}
+
+/* ========================================
+   WEB DEVELOPMENT - FULL MOBILE LAYOUT
+======================================== */
+
+@media (max-width: 650px) {
+
+    /* ---------- GLOBAL ---------- */
+
+    html,
+    body {
+        width: 100%;
+        max-width: 100%;
+        overflow-x: hidden;
+    }
+
+    .section-container {
+        width: 100%;
+        max-width: 100%;
+        padding-left: 20px;
+        padding-right: 20px;
+    }
+
+
+    /* ---------- HEADER ---------- */
+
+    .service-page-header {
+        width: 100%;
+    }
+
+    .service-nav-container {
+        width: 100%;
+        max-width: 100%;
+        padding-left: 20px;
+        padding-right: 20px;
+    }
+
+    .service-page-logo img {
+        max-width: 130px;
+        height: auto;
+    }
+
+
+    /* ---------- HERO ---------- */
+
+    .service-hero {
+        width: 100%;
+        min-height: auto;
+
+        padding:
+            125px 0
+            70px;
+
+        overflow: hidden;
+    }
+
+    .service-hero .section-container {
+        display: block;
+    }
+
+    .service-hero-content {
+        width: 100%;
+        max-width: 100%;
+        min-width: 0;
+    }
+
+    .service-breadcrumb {
+        max-width: 100%;
+
+        flex-wrap: wrap;
+
+        gap: 8px;
+    }
+
+    .service-hero-label {
+        margin-top: 26px;
+    }
+
+    .service-hero-content h1 {
+        width: 100%;
+        max-width: 100%;
+
+        font-size: clamp(46px, 13vw, 62px);
+        line-height: 0.98;
+
+        letter-spacing: -2px;
+
+        overflow-wrap: normal;
+        word-break: normal;
+    }
+
+    .service-hero-content h1 span {
+        display: block;
+    }
+
+    .service-hero-intro {
+        width: 100%;
+        max-width: 100%;
+
+        font-size: 16px;
+        line-height: 1.7;
+    }
+
+
+    /* ---------- HERO BUTTONS ---------- */
+
+    .service-hero-actions {
+        width: 100%;
+
+        display: grid;
+        grid-template-columns: 1fr;
+
+        gap: 12px;
+    }
+
+    .service-primary-button,
+    .service-secondary-button {
+        width: 100%;
+        max-width: 100%;
+
+        min-width: 0;
+
+        display: flex;
+        align-items: center;
+        justify-content: center;
+
+        text-align: center;
+    }
+
+
+    /* ---------- HERO META ---------- */
+
+    .service-hero-meta {
+        width: 100%;
+
+        display: grid;
+        grid-template-columns:
+            repeat(2, minmax(0, 1fr));
+
+        gap: 14px;
+
+        margin-top: 35px;
+    }
+
+    .service-hero-meta i {
+        display: none;
+    }
+
+    .service-hero-meta div {
+        min-width: 0;
+    }
+
+
+    /* ---------- HERO VISUAL ---------- */
+
+    .service-hero-visual {
+        position: relative;
+
+        width: 100%;
+        max-width: 100%;
+        min-width: 0;
+
+        margin-top: 55px;
+    }
+
+    .web-browser-mockup {
+        width: 100%;
+        max-width: 100%;
+
+        margin: 0;
+    }
+
+    .web-browser-address {
+        min-width: 0;
+
+        overflow: hidden;
+        text-overflow: ellipsis;
+        white-space: nowrap;
+    }
+
+    .service-floating-card {
+        max-width: 155px;
+
+        padding: 14px;
+    }
+
+    .service-floating-card-one {
+        left: 10px;
+    }
+
+    .service-floating-card-two {
+        right: 10px;
+    }
+
+
+    /* ========================================
+       INTRO
+    ======================================== */
+
+    .web-intro-section {
+        width: 100%;
+
+        padding:
+            75px 0;
+    }
+
+    .web-intro-section .section-container {
+        display: block;
+    }
+
+    .web-intro-number {
+        margin-bottom: 25px;
+
+        font-size: 12px;
+    }
+
+    .web-intro-content {
+        width: 100%;
+        max-width: 100%;
+    }
+
+    .web-intro-content h2 {
+        width: 100%;
+
+        font-size: clamp(36px, 10vw, 50px);
+        line-height: 1.05;
+
+        letter-spacing: -1.5px;
+    }
+
+    .web-intro-content h2 span {
+        display: block;
+    }
+
+    .web-intro-copy {
+        width: 100%;
+
+        display: grid;
+        grid-template-columns: 1fr;
+
+        gap: 20px;
+
+        margin-top: 30px;
+    }
+
+    .web-intro-copy p {
+        width: 100%;
+        max-width: 100%;
+    }
+
+
+    /* ========================================
+       CONVERSION JOURNEY
+    ======================================== */
+
+    .web-conversion-section {
+        width: 100%;
+
+        padding:
+            75px 0;
+    }
+
+    .web-conversion-heading {
+        width: 100%;
+    }
+
+    .web-conversion-heading h2 {
+        font-size: clamp(36px, 10vw, 50px);
+        line-height: 1.05;
+
+        letter-spacing: -1.5px;
+    }
+
+    .web-conversion-flow {
+        width: 100%;
+
+        display: grid;
+        grid-template-columns: 1fr;
+
+        gap: 14px;
+
+        margin-top: 40px;
+    }
+
+    .conversion-item {
+        width: 100%;
+        max-width: 100%;
+
+        min-width: 0;
+    }
+
+    .conversion-arrow {
+        width: 100%;
+
+        transform: rotate(90deg);
+
+        text-align: center;
+    }
+
+
+    /* ========================================
+       WHAT WE BUILD
+    ======================================== */
+
+    .web-solutions-section {
+        width: 100%;
+
+        padding:
+            75px 0;
+    }
+
+    .web-solutions-heading {
+        width: 100%;
+
+        display: grid;
+        grid-template-columns: 1fr;
+
+        gap: 22px;
+    }
+
+    .web-solutions-heading > div,
+    .web-solutions-heading > p {
+        width: 100%;
+        max-width: 100%;
+    }
+
+    .web-solutions-heading h2 {
+        font-size: clamp(36px, 10vw, 50px);
+        line-height: 1.05;
+
+        letter-spacing: -1.5px;
+    }
+
+    .web-solutions-grid {
+        width: 100%;
+
+        display: grid;
+        grid-template-columns: 1fr;
+
+        gap: 14px;
+
+        margin-top: 40px;
+    }
+
+    .web-solution-card {
+        width: 100%;
+        max-width: 100%;
+
+        min-width: 0;
+
+        padding: 28px 24px;
+    }
+
+    .web-solution-card h3,
+    .web-solution-card p {
+        max-width: 100%;
+    }
+
+
+    /* ========================================
+       APPROACH
+    ======================================== */
+
+    .web-approach-section {
+        width: 100%;
+
+        padding:
+            75px 0;
+    }
+
+    .web-approach-layout {
+        width: 100%;
+
+        display: grid;
+        grid-template-columns: 1fr;
+
+        gap: 45px;
+    }
+
+    .web-approach-heading,
+    .web-approach-list {
+        width: 100%;
+        max-width: 100%;
+
+        min-width: 0;
+    }
+
+    .web-approach-heading h2 {
+        font-size: clamp(36px, 10vw, 50px);
+        line-height: 1.05;
+
+        letter-spacing: -1.5px;
+    }
+
+    .web-approach-item {
+        width: 100%;
+        max-width: 100%;
+
+        display: grid;
+        grid-template-columns:
+            35px minmax(0, 1fr);
+
+        gap: 15px;
+
+        padding:
+            24px 0;
+    }
+
+    .web-approach-item > div {
+        min-width: 0;
+    }
+
+    .web-approach-item h3,
+    .web-approach-item p {
+        max-width: 100%;
+    }
+
+
+    /* ========================================
+       FINAL CTA
+    ======================================== */
+
+    .web-service-cta {
+        width: 100%;
+
+        padding:
+            80px 0;
+    }
+
+    .web-service-cta-content {
+        width: 100%;
+        max-width: 100%;
+    }
+
+    .web-service-cta-content h2 {
+        font-size: clamp(38px, 11vw, 52px);
+        line-height: 1.03;
+
+        letter-spacing: -1.5px;
+    }
+
+    .web-service-cta-content p {
+        width: 100%;
+        max-width: 100%;
+    }
+
+    .web-service-cta-content .service-primary-button {
+        width: 100%;
+    }
+
+
+    /* ========================================
+       FOOTER
+    ======================================== */
+
+    .service-page-footer {
+        width: 100%;
+    }
+
+    .service-footer-main {
+        width: 100%;
+
+        display: grid;
+        grid-template-columns: 1fr;
+
+        gap: 35px;
+    }
+
+    .service-footer-links {
+        width: 100%;
+
+        display: grid;
+        grid-template-columns: 1fr;
+
+        gap: 16px;
+    }
+
+    .service-footer-bottom {
+        width: 100%;
+
+        display: grid;
+        grid-template-columns: 1fr;
+
+        gap: 10px;
+
+        text-align: left;
+    }
+
+    .service-footer-logo {
+        max-width: 150px;
+        height: auto;
+    }
+
+
+    /* ---------- FINAL OVERFLOW PROTECTION ---------- */
+
+    .service-hero *,
+    .web-intro-section *,
+    .web-conversion-section *,
+    .web-solutions-section *,
+    .web-approach-section *,
+    .web-service-cta *,
+    .service-page-footer * {
+        max-width: 100%;
+    }
+
+}
+
+/* ========================================
+   SOCIAL MEDIA - FULL MOBILE LAYOUT
+======================================== */
+
+@media (max-width: 650px) {
+
+    /* ---------- HERO ---------- */
+
+    .social-hero {
+        width: 100%;
+        min-height: auto;
+
+        padding:
+            125px 0
+            70px;
+
+        overflow: hidden;
+    }
+
+    .social-hero .section-container {
+        width: 100%;
+        max-width: 100%;
+
+        display: block;
+
+        padding-left: 20px;
+        padding-right: 20px;
+    }
+
+    .social-hero-content {
+        width: 100%;
+        max-width: 100%;
+        min-width: 0;
+    }
+
+    .social-hero-content h1 {
+        width: 100%;
+        max-width: 100%;
+
+        font-size: clamp(46px, 13vw, 62px);
+        line-height: 0.98;
+
+        letter-spacing: -2px;
+    }
+
+    .social-hero-content h1 span {
+        display: block;
+    }
+
+    .social-hero-intro {
+        width: 100%;
+        max-width: 100%;
+
+        font-size: 16px;
+        line-height: 1.7;
+    }
+
+
+    /* ---------- HERO BUTTONS ---------- */
+
+    .social-hero .service-hero-actions {
+        width: 100%;
+
+        display: grid;
+        grid-template-columns: 1fr;
+
+        gap: 12px;
+    }
+
+    .social-hero .service-primary-button,
+    .social-hero .service-secondary-button {
+        width: 100%;
+        max-width: 100%;
+
+        min-width: 0;
+
+        justify-content: center;
+
+        text-align: center;
+    }
+
+
+    /* ---------- PLATFORM ROW ---------- */
+
+    .social-platform-row {
+        width: 100%;
+
+        display: flex;
+        flex-wrap: wrap;
+
+        gap: 10px 14px;
+
+        margin-top: 30px;
+    }
+
+    .social-platform-row i {
+        display: none;
+    }
+
+
+    /* ---------- SOCIAL DASHBOARD ---------- */
+
+    .social-hero-visual {
+        position: relative;
+
+        width: 100%;
+        max-width: 100%;
+        min-width: 0;
+
+        margin-top: 55px;
+    }
+
+    .social-dashboard {
+        width: 100%;
+        max-width: 100%;
+
+        min-width: 0;
+
+        margin: 0;
+    }
+
+    .social-dashboard-top {
+        gap: 12px;
+
+        flex-wrap: wrap;
+    }
+
+    .social-stats-grid {
+        width: 100%;
+
+        display: grid;
+        grid-template-columns: 1fr;
+
+        gap: 10px;
+    }
+
+    .social-stat {
+        width: 100%;
+        min-width: 0;
+    }
+
+    .social-post-card {
+        width: 100%;
+        max-width: 100%;
+    }
+
+    .social-post-header {
+        min-width: 0;
+    }
+
+    .social-post-header > div:nth-child(2) {
+        min-width: 0;
+    }
+
+    .social-post-image {
+        width: 100%;
+        max-width: 100%;
+    }
+
+    .social-post-engagement {
+        width: 100%;
+
+        display: flex;
+        flex-wrap: wrap;
+
+        gap: 12px;
+    }
+
+
+    /* ---------- FLOATING CARDS ---------- */
+
+    .social-floating-card {
+        max-width: 145px;
+
+        padding: 13px;
+    }
+
+    .social-floating-one {
+        left: 5px;
+    }
+
+    .social-floating-two {
+        right: 5px;
+    }
+
+
+    /* ========================================
+       INTRO
+    ======================================== */
+
+    .social-intro-section {
+        width: 100%;
+
+        padding: 75px 0;
+    }
+
+    .social-intro-section .section-container {
+        width: 100%;
+
+        display: block;
+
+        padding-left: 20px;
+        padding-right: 20px;
+    }
+
+    .social-intro-section .web-intro-number {
+        margin-bottom: 25px;
+    }
+
+    .social-intro-section .web-intro-content {
+        width: 100%;
+        max-width: 100%;
+    }
+
+    .social-intro-section .web-intro-content h2 {
+        font-size: clamp(36px, 10vw, 50px);
+        line-height: 1.05;
+
+        letter-spacing: -1.5px;
+    }
+
+    .social-intro-section .web-intro-content h2 span {
+        display: block;
+    }
+
+    .social-intro-section .web-intro-copy {
+        width: 100%;
+
+        display: grid;
+        grid-template-columns: 1fr;
+
+        gap: 20px;
+
+        margin-top: 30px;
+    }
+
+
+    /* ========================================
+       SOCIAL JOURNEY
+    ======================================== */
+
+    .social-strategy-section {
+        width: 100%;
+
+        padding: 75px 0;
+    }
+
+    .social-strategy-section .section-container {
+        padding-left: 20px;
+        padding-right: 20px;
+    }
+
+    .social-strategy-heading {
+        width: 100%;
+        max-width: 100%;
+    }
+
+    .social-strategy-heading h2 {
+        font-size: clamp(36px, 10vw, 50px);
+        line-height: 1.05;
+
+        letter-spacing: -1.5px;
+    }
+
+    .social-strategy-flow {
+        width: 100%;
+
+        display: grid;
+        grid-template-columns: 1fr;
+
+        gap: 14px;
+
+        margin-top: 40px;
+    }
+
+    .social-strategy-flow article {
+        width: 100%;
+        max-width: 100%;
+
+        min-width: 0;
+    }
+
+    .social-flow-arrow {
+        width: 100%;
+
+        transform: rotate(90deg);
+
+        text-align: center;
+    }
+
+
+    /* ========================================
+       SOCIAL SERVICES
+    ======================================== */
+
+    .social-services-section {
+        width: 100%;
+
+        padding: 75px 0;
+    }
+
+    .social-services-section .section-container {
+        padding-left: 20px;
+        padding-right: 20px;
+    }
+
+    .social-services-section .web-solutions-heading {
+        width: 100%;
+
+        display: grid;
+        grid-template-columns: 1fr;
+
+        gap: 22px;
+    }
+
+    .social-services-section
+    .web-solutions-heading > div,
+    .social-services-section
+    .web-solutions-heading > p {
+        width: 100%;
+        max-width: 100%;
+    }
+
+    .social-services-section
+    .web-solutions-heading h2 {
+        font-size: clamp(36px, 10vw, 50px);
+        line-height: 1.05;
+
+        letter-spacing: -1.5px;
+    }
+
+    .social-services-grid {
+        width: 100%;
+
+        display: grid;
+        grid-template-columns: 1fr;
+
+        gap: 14px;
+
+        margin-top: 40px;
+    }
+
+    .social-service-card {
+        width: 100%;
+        max-width: 100%;
+
+        min-width: 0;
+
+        padding: 28px 24px;
+    }
+
+
+    /* ========================================
+       CONSISTENCY
+    ======================================== */
+
+    .social-consistency-section {
+        width: 100%;
+
+        padding: 75px 0;
+    }
+
+    .social-consistency-section .section-container {
+        padding-left: 20px;
+        padding-right: 20px;
+    }
+
+    .social-consistency-layout {
+        width: 100%;
+
+        display: grid;
+        grid-template-columns: 1fr;
+
+        gap: 45px;
+    }
+
+    .social-consistency-content,
+    .social-channel-stack {
+        width: 100%;
+        max-width: 100%;
+
+        min-width: 0;
+    }
+
+    .social-consistency-content h2 {
+        font-size: clamp(36px, 10vw, 50px);
+        line-height: 1.05;
+
+        letter-spacing: -1.5px;
+    }
+
+    .social-consistency-content h2 span {
+        display: block;
+    }
+
+    .social-consistency-content
+    .service-secondary-button {
+        width: 100%;
+
+        justify-content: center;
+
+        text-align: center;
+    }
+
+
+    /* ---------- CHANNEL CARDS ---------- */
+
+    .social-channel-stack {
+        display: grid;
+
+        gap: 12px;
+    }
+
+    .social-channel-card {
+        width: 100%;
+        max-width: 100%;
+
+        min-width: 0;
+
+        display: grid;
+        grid-template-columns:
+            auto minmax(0, 1fr);
+
+        gap: 14px;
+
+        padding: 18px;
+    }
+
+    .social-channel-card > div:nth-child(2) {
+        min-width: 0;
+    }
+
+    .social-channel-card small {
+        grid-column: 2;
+
+        justify-self: start;
+    }
+
+    .social-channel-card span {
+        overflow-wrap: anywhere;
+    }
+
+
+    /* ========================================
+       FINAL CTA
+    ======================================== */
+
+    .social-services-section *,
+    .social-strategy-section *,
+    .social-consistency-section *,
+    .social-intro-section *,
+    .social-hero * {
+        max-width: 100%;
+    }
+
+}
+
+/* ========================================
+   DIGITAL MARKETING - FULL MOBILE LAYOUT
+======================================== */
+
+@media (max-width: 650px) {
+
+    /* ========================================
+       HERO
+    ======================================== */
+
+    .marketing-hero {
+        width: 100%;
+        min-height: auto;
+
+        padding: 125px 0 70px;
+
+        overflow: hidden;
+    }
+
+    .marketing-hero .section-container {
+        width: 100%;
+        max-width: 100%;
+
+        display: block;
+
+        padding-left: 20px;
+        padding-right: 20px;
+    }
+
+    .marketing-hero-content {
+        width: 100%;
+        max-width: 100%;
+        min-width: 0;
+    }
+
+    .marketing-hero-content h1 {
+        width: 100%;
+        max-width: 100%;
+
+        font-size: clamp(46px, 13vw, 62px);
+        line-height: 0.98;
+
+        letter-spacing: -2px;
+    }
+
+    .marketing-hero-content h1 span {
+        display: block;
+    }
+
+    .marketing-hero-intro {
+        width: 100%;
+        max-width: 100%;
+
+        font-size: 16px;
+        line-height: 1.7;
+    }
+
+
+    /* ---------- HERO BUTTONS ---------- */
+
+    .marketing-hero .service-hero-actions {
+        width: 100%;
+
+        display: grid;
+        grid-template-columns: 1fr;
+
+        gap: 12px;
+    }
+
+    .marketing-hero .service-primary-button,
+    .marketing-hero .service-secondary-button {
+        width: 100%;
+        max-width: 100%;
+
+        min-width: 0;
+
+        justify-content: center;
+
+        text-align: center;
+    }
+
+
+    /* ---------- HERO META ---------- */
+
+    .marketing-hero-meta {
+        width: 100%;
+
+        display: grid;
+        grid-template-columns:
+            repeat(3, minmax(0, 1fr));
+
+        gap: 10px;
+
+        margin-top: 32px;
+    }
+
+    .marketing-hero-meta i {
+        display: none;
+    }
+
+    .marketing-hero-meta div {
+        min-width: 0;
+    }
+
+    .marketing-hero-meta strong {
+        font-size: 11px;
+    }
+
+
+    /* ========================================
+       PERFORMANCE DASHBOARD
+    ======================================== */
+
+    .marketing-hero-visual {
+        position: relative;
+
+        width: 100%;
+        max-width: 100%;
+        min-width: 0;
+
+        margin-top: 55px;
+    }
+
+    .marketing-dashboard {
+        width: 100%;
+        max-width: 100%;
+
+        min-width: 0;
+
+        margin: 0;
+    }
+
+    .marketing-dashboard-header {
+        width: 100%;
+
+        gap: 12px;
+
+        flex-wrap: wrap;
+    }
+
+    .marketing-dashboard-header > div:first-child {
+        min-width: 0;
+    }
+
+    .marketing-period {
+        flex-shrink: 0;
+    }
+
+
+    /* ---------- MAIN RESULT ---------- */
+
+    .marketing-main-result {
+        width: 100%;
+
+        display: grid;
+        grid-template-columns: 1fr;
+
+        gap: 20px;
+    }
+
+    .marketing-main-result > div {
+        min-width: 0;
+    }
+
+    .marketing-growth-circle {
+        justify-self: start;
+    }
+
+
+    /* ---------- CHART ---------- */
+
+    .marketing-chart {
+        width: 100%;
+        max-width: 100%;
+
+        min-width: 0;
+
+        overflow: hidden;
+    }
+
+    .marketing-chart-top {
+        gap: 10px;
+
+        flex-wrap: wrap;
+    }
+
+    .marketing-chart-area,
+    .marketing-chart-grid,
+    .marketing-bars {
+        width: 100%;
+        max-width: 100%;
+
+        min-width: 0;
+    }
+
+    .marketing-bars {
+        gap: 4px;
+    }
+
+    .marketing-bars span {
+        min-width: 0;
+    }
+
+
+    /* ---------- KPI CARDS ---------- */
+
+    .marketing-kpi-grid {
+        width: 100%;
+
+        display: grid;
+        grid-template-columns: 1fr;
+
+        gap: 10px;
+    }
+
+    .marketing-kpi-grid > div {
+        width: 100%;
+        min-width: 0;
+    }
+
+
+    /* ---------- FLOATING CARDS ---------- */
+
+    .marketing-floating-card {
+        max-width: 145px;
+
+        padding: 13px;
+    }
+
+    .marketing-floating-one {
+        left: 5px;
+    }
+
+    .marketing-floating-two {
+        right: 5px;
+    }
+
+
+    /* ========================================
+       INTRO
+    ======================================== */
+
+    .marketing-intro-section {
+        width: 100%;
+
+        padding: 75px 0;
+    }
+
+    .marketing-intro-section .section-container {
+        width: 100%;
+        max-width: 100%;
+
+        display: block;
+
+        padding-left: 20px;
+        padding-right: 20px;
+    }
+
+    .marketing-intro-section .web-intro-number {
+        margin-bottom: 25px;
+    }
+
+    .marketing-intro-section .web-intro-content {
+        width: 100%;
+        max-width: 100%;
+    }
+
+    .marketing-intro-section .web-intro-content h2 {
+        width: 100%;
+
+        font-size: clamp(36px, 10vw, 50px);
+        line-height: 1.05;
+
+        letter-spacing: -1.5px;
+    }
+
+    .marketing-intro-section .web-intro-content h2 span {
+        display: block;
+    }
+
+    .marketing-intro-section .web-intro-copy {
+        width: 100%;
+
+        display: grid;
+        grid-template-columns: 1fr;
+
+        gap: 20px;
+
+        margin-top: 30px;
+    }
+
+
+    /* ========================================
+       GROWTH JOURNEY
+    ======================================== */
+
+    .marketing-funnel-section {
+        width: 100%;
+
+        padding: 75px 0;
+    }
+
+    .marketing-funnel-section .section-container {
+        padding-left: 20px;
+        padding-right: 20px;
+    }
+
+    .marketing-section-heading {
+        width: 100%;
+        max-width: 100%;
+    }
+
+    .marketing-section-heading h2 {
+        width: 100%;
+
+        font-size: clamp(36px, 10vw, 50px);
+        line-height: 1.05;
+
+        letter-spacing: -1.5px;
+    }
+
+    .marketing-section-heading h2 span {
+        display: block;
+    }
+
+    .marketing-funnel {
+        width: 100%;
+
+        display: grid;
+        grid-template-columns: 1fr;
+
+        gap: 14px;
+
+        margin-top: 40px;
+    }
+
+    .marketing-funnel article {
+        width: 100%;
+        max-width: 100%;
+
+        min-width: 0;
+    }
+
+    .marketing-funnel-arrow {
+        width: 100%;
+
+        transform: rotate(90deg);
+
+        text-align: center;
+    }
+
+
+    /* ========================================
+       MARKETING SERVICES
+    ======================================== */
+
+    .marketing-services-section {
+        width: 100%;
+
+        padding: 75px 0;
+    }
+
+    .marketing-services-section .section-container {
+        padding-left: 20px;
+        padding-right: 20px;
+    }
+
+    .marketing-services-section .web-solutions-heading {
+        width: 100%;
+
+        display: grid;
+        grid-template-columns: 1fr;
+
+        gap: 22px;
+    }
+
+    .marketing-services-section
+    .web-solutions-heading > div,
+    .marketing-services-section
+    .web-solutions-heading > p {
+        width: 100%;
+        max-width: 100%;
+    }
+
+    .marketing-services-section
+    .web-solutions-heading h2 {
+        font-size: clamp(36px, 10vw, 50px);
+        line-height: 1.05;
+
+        letter-spacing: -1.5px;
+    }
+
+    .marketing-services-grid {
+        width: 100%;
+
+        display: grid;
+        grid-template-columns: 1fr;
+
+        gap: 14px;
+
+        margin-top: 40px;
+    }
+
+    .marketing-service-card {
+        width: 100%;
+        max-width: 100%;
+
+        min-width: 0;
+
+        padding: 28px 24px;
+    }
+
+    .marketing-service-card h3,
+    .marketing-service-card p {
+        max-width: 100%;
+    }
+
+
+    /* ========================================
+       DATA / DECISIONS
+    ======================================== */
+
+    .marketing-data-section {
+        width: 100%;
+
+        padding: 75px 0;
+    }
+
+    .marketing-data-section .section-container {
+        padding-left: 20px;
+        padding-right: 20px;
+    }
+
+    .marketing-data-layout {
+        width: 100%;
+
+        display: grid;
+        grid-template-columns: 1fr;
+
+        gap: 45px;
+    }
+
+    .marketing-data-content,
+    .marketing-metrics-panel {
+        width: 100%;
+        max-width: 100%;
+
+        min-width: 0;
+    }
+
+    .marketing-data-content h2 {
+        width: 100%;
+
+        font-size: clamp(36px, 10vw, 50px);
+        line-height: 1.05;
+
+        letter-spacing: -1.5px;
+    }
+
+    .marketing-data-content h2 span {
+        display: block;
+    }
+
+
+    /* ---------- METRICS ---------- */
+
+    .marketing-metrics-panel {
+        padding: 24px 20px;
+    }
+
+    .marketing-metric-row {
+        width: 100%;
+
+        display: flex;
+        align-items: flex-end;
+        justify-content: space-between;
+
+        gap: 15px;
+    }
+
+    .marketing-metric-row > div {
+        min-width: 0;
+    }
+
+    .marketing-metric-row small {
+        flex-shrink: 0;
+    }
+
+    .marketing-metric-bar {
+        width: 100%;
+        max-width: 100%;
+    }
+
+
+    /* ========================================
+       FINAL OVERFLOW PROTECTION
+    ======================================== */
+
+    .marketing-hero *,
+    .marketing-intro-section *,
+    .marketing-funnel-section *,
+    .marketing-services-section *,
+    .marketing-data-section * {
+        max-width: 100%;
+    }
+
+}
+
+/* ========================================
+   BRANDING & DESIGN - FULL MOBILE LAYOUT
+======================================== */
+
+@media (max-width: 650px) {
+
+    /* ========================================
+       HERO
+    ======================================== */
+
+    .branding-hero {
+        width: 100%;
+        min-height: auto;
+
+        padding: 125px 0 70px;
+
+        overflow: hidden;
+    }
+
+    .branding-hero .section-container {
+        width: 100%;
+        max-width: 100%;
+
+        display: block;
+
+        padding-left: 20px;
+        padding-right: 20px;
+    }
+
+    .branding-hero-content {
+        width: 100%;
+        max-width: 100%;
+        min-width: 0;
+    }
+
+    .branding-hero-content h1 {
+        width: 100%;
+        max-width: 100%;
+
+        font-size: clamp(46px, 13vw, 62px);
+        line-height: 0.98;
+
+        letter-spacing: -2px;
+    }
+
+    .branding-hero-content h1 span {
+        display: block;
+    }
+
+    .branding-hero-intro {
+        width: 100%;
+        max-width: 100%;
+
+        font-size: 16px;
+        line-height: 1.7;
+    }
+
+
+    /* ---------- HERO BUTTONS ---------- */
+
+    .branding-hero .service-hero-actions {
+        width: 100%;
+
+        display: grid;
+        grid-template-columns: 1fr;
+
+        gap: 12px;
+    }
+
+    .branding-hero .service-primary-button,
+    .branding-hero .service-secondary-button {
+        width: 100%;
+        max-width: 100%;
+
+        min-width: 0;
+
+        justify-content: center;
+
+        text-align: center;
+    }
+
+
+    /* ---------- HERO META ---------- */
+
+    .branding-hero-meta {
+        width: 100%;
+
+        display: grid;
+        grid-template-columns:
+            repeat(2, minmax(0, 1fr));
+
+        gap: 12px;
+
+        margin-top: 32px;
+    }
+
+    .branding-hero-meta i {
+        display: none;
+    }
+
+    .branding-hero-meta span {
+        min-width: 0;
+    }
+
+
+    /* ========================================
+       BRAND BOARD
+    ======================================== */
+
+    .branding-hero-visual {
+        position: relative;
+
+        width: 100%;
+        max-width: 100%;
+        min-width: 0;
+
+        margin-top: 55px;
+    }
+
+    .brand-board {
+        width: 100%;
+        max-width: 100%;
+
+        min-width: 0;
+
+        margin: 0;
+
+        padding: 20px;
+    }
+
+    .brand-board-header {
+        width: 100%;
+
+        display: flex;
+        justify-content: space-between;
+        align-items: flex-start;
+
+        gap: 15px;
+    }
+
+    .brand-board-header > div {
+        min-width: 0;
+    }
+
+
+    /* ---------- LOGO CONCEPT ---------- */
+
+    .brand-logo-concept {
+        width: 100%;
+
+        display: grid;
+        grid-template-columns:
+            auto minmax(0, 1fr);
+
+        gap: 16px;
+
+        align-items: center;
+    }
+
+    .brand-logo-concept > div:last-child {
+        min-width: 0;
+    }
+
+    .brand-logo-concept strong {
+        max-width: 100%;
+    }
+
+
+    /* ---------- COLOUR SYSTEM ---------- */
+
+    .brand-colours {
+        width: 100%;
+
+        display: grid;
+        grid-template-columns:
+            repeat(2, minmax(0, 1fr));
+
+        gap: 8px;
+    }
+
+    .brand-colour {
+        width: 100%;
+        min-width: 0;
+    }
+
+    .brand-colour span {
+        font-size: 9px;
+    }
+
+
+    /* ---------- TYPOGRAPHY ---------- */
+
+    .brand-type-preview {
+        width: 100%;
+
+        display: grid;
+        grid-template-columns:
+            auto minmax(0, 1fr);
+
+        gap: 14px;
+
+        align-items: center;
+    }
+
+    .brand-type-preview > div:last-child {
+        min-width: 0;
+    }
+
+    .brand-type-preview span,
+    .brand-type-preview small {
+        display: block;
+
+        max-width: 100%;
+
+        overflow: hidden;
+
+        font-size: 8px;
+        letter-spacing: 0.5px;
+    }
+
+
+    /* ---------- FLOATING CARDS ---------- */
+
+    .branding-floating-card {
+        max-width: 145px;
+
+        padding: 13px;
+    }
+
+    .branding-floating-one {
+        left: 5px;
+    }
+
+    .branding-floating-two {
+        right: 5px;
+    }
+
+
+    /* ========================================
+       INTRO
+    ======================================== */
+
+    .branding-intro-section {
+        width: 100%;
+
+        padding: 75px 0;
+    }
+
+    .branding-intro-section .section-container {
+        width: 100%;
+        max-width: 100%;
+
+        display: block;
+
+        padding-left: 20px;
+        padding-right: 20px;
+    }
+
+    .branding-intro-section .web-intro-number {
+        margin-bottom: 25px;
+    }
+
+    .branding-intro-section .web-intro-content {
+        width: 100%;
+        max-width: 100%;
+    }
+
+    .branding-intro-section
+    .web-intro-content h2 {
+        width: 100%;
+
+        font-size: clamp(36px, 10vw, 50px);
+        line-height: 1.05;
+
+        letter-spacing: -1.5px;
+    }
+
+    .branding-intro-section
+    .web-intro-content h2 span {
+        display: block;
+    }
+
+    .branding-intro-section .web-intro-copy {
+        width: 100%;
+
+        display: grid;
+        grid-template-columns: 1fr;
+
+        gap: 20px;
+
+        margin-top: 30px;
+    }
+
+
+    /* ========================================
+       BRAND JOURNEY
+    ======================================== */
+
+    .branding-journey-section {
+        width: 100%;
+
+        padding: 75px 0;
+    }
+
+    .branding-journey-section .section-container {
+        padding-left: 20px;
+        padding-right: 20px;
+    }
+
+    .branding-section-heading {
+        width: 100%;
+        max-width: 100%;
+    }
+
+    .branding-section-heading h2 {
+        width: 100%;
+
+        font-size: clamp(36px, 10vw, 50px);
+        line-height: 1.05;
+
+        letter-spacing: -1.5px;
+    }
+
+    .branding-section-heading h2 span {
+        display: block;
+    }
+
+    .branding-journey {
+        width: 100%;
+
+        display: grid;
+        grid-template-columns: 1fr;
+
+        gap: 14px;
+
+        margin-top: 40px;
+    }
+
+    .branding-journey article {
+        width: 100%;
+        max-width: 100%;
+
+        min-width: 0;
+    }
+
+    .branding-journey-arrow {
+        width: 100%;
+
+        transform: rotate(90deg);
+
+        text-align: center;
+    }
+
+
+    /* ========================================
+       BRANDING SERVICES
+    ======================================== */
+
+    .branding-services-section {
+        width: 100%;
+
+        padding: 75px 0;
+    }
+
+    .branding-services-section .section-container {
+        padding-left: 20px;
+        padding-right: 20px;
+    }
+
+    .branding-services-section
+    .web-solutions-heading {
+        width: 100%;
+
+        display: grid;
+        grid-template-columns: 1fr;
+
+        gap: 22px;
+    }
+
+    .branding-services-section
+    .web-solutions-heading > div,
+    .branding-services-section
+    .web-solutions-heading > p {
+        width: 100%;
+        max-width: 100%;
+    }
+
+    .branding-services-section
+    .web-solutions-heading h2 {
+        font-size: clamp(36px, 10vw, 50px);
+        line-height: 1.05;
+
+        letter-spacing: -1.5px;
+    }
+
+    .branding-services-grid {
+        width: 100%;
+
+        display: grid;
+        grid-template-columns: 1fr;
+
+        gap: 14px;
+
+        margin-top: 40px;
+    }
+
+    .branding-service-card {
+        width: 100%;
+        max-width: 100%;
+
+        min-width: 0;
+
+        padding: 28px 24px;
+    }
+
+    .branding-service-card h3,
+    .branding-service-card p {
+        max-width: 100%;
+    }
+
+
+    /* ========================================
+       BRAND SYSTEM SHOWCASE
+    ======================================== */
+
+    .branding-system-section {
+        width: 100%;
+
+        padding: 75px 0;
+    }
+
+    .branding-system-section .section-container {
+        padding-left: 20px;
+        padding-right: 20px;
+    }
+
+    .branding-system-layout {
+        width: 100%;
+
+        display: grid;
+        grid-template-columns: 1fr;
+
+        gap: 45px;
+    }
+
+    .branding-system-content,
+    .branding-application-grid {
+        width: 100%;
+        max-width: 100%;
+
+        min-width: 0;
+    }
+
+    .branding-system-content h2 {
+        width: 100%;
+
+        font-size: clamp(36px, 10vw, 50px);
+        line-height: 1.05;
+
+        letter-spacing: -1.5px;
+    }
+
+    .branding-system-content h2 span {
+        display: block;
+    }
+
+    .branding-system-content
+    .service-secondary-button {
+        width: 100%;
+
+        justify-content: center;
+
+        text-align: center;
+    }
+
+
+    /* ---------- APPLICATION GRID ---------- */
+
+    .branding-application-grid {
+        display: grid;
+        grid-template-columns: 1fr;
+
+        gap: 12px;
+    }
+
+    .brand-application,
+    .brand-application-large,
+    .brand-application-wide {
+        width: 100%;
+        max-width: 100%;
+
+        min-width: 0;
+
+        grid-column: auto;
+        grid-row: auto;
+    }
+
+    .brand-application {
+        min-height: 160px;
+    }
+
+    .brand-application-large {
+        min-height: 230px;
+    }
+
+    .brand-application-wide {
+        min-height: 180px;
+    }
+
+    .brand-application strong,
+    .brand-application p,
+    .brand-application span,
+    .brand-application small {
+        max-width: 100%;
+    }
+
+    .brand-type-large {
+        font-size: clamp(50px, 18vw, 78px);
+    }
+
+    .brand-mini-palette {
+        max-width: 100%;
+    }
+
+
+    /* ========================================
+       FINAL OVERFLOW PROTECTION
+    ======================================== */
+
+    .branding-hero *,
+    .branding-intro-section *,
+    .branding-journey-section *,
+    .branding-services-section *,
+    .branding-system-section * {
+        max-width: 100%;
+    }
+
+}
+
+/* ========================================
+   DIGITAL SUPPORT - FULL MOBILE LAYOUT
+======================================== */
+
+@media (max-width: 650px) {
+
+    /* ========================================
+       HERO
+    ======================================== */
+
+    .support-hero {
+        width: 100%;
+        min-height: auto;
+
+        padding: 125px 0 70px;
+
+        overflow: hidden;
+    }
+
+    .support-hero .section-container {
+        width: 100%;
+        max-width: 100%;
+
+        display: block;
+
+        padding-left: 20px;
+        padding-right: 20px;
+    }
+
+    .support-hero-content {
+        width: 100%;
+        max-width: 100%;
+        min-width: 0;
+    }
+
+    .support-hero-content h1 {
+        width: 100%;
+        max-width: 100%;
+
+        font-size: clamp(46px, 13vw, 62px);
+        line-height: 0.98;
+
+        letter-spacing: -2px;
+    }
+
+    .support-hero-content h1 span {
+        display: block;
+    }
+
+    .support-hero-intro {
+        width: 100%;
+        max-width: 100%;
+
+        font-size: 16px;
+        line-height: 1.7;
+    }
+
+
+    /* ---------- HERO BUTTONS ---------- */
+
+    .support-hero .service-hero-actions {
+        width: 100%;
+
+        display: grid;
+        grid-template-columns: 1fr;
+
+        gap: 12px;
+    }
+
+    .support-hero .service-primary-button,
+    .support-hero .service-secondary-button {
+        width: 100%;
+        max-width: 100%;
+
+        min-width: 0;
+
+        justify-content: center;
+
+        text-align: center;
+    }
+
+
+    /* ---------- HERO META ---------- */
+
+    .support-hero-meta {
+        width: 100%;
+
+        display: grid;
+        grid-template-columns:
+            repeat(3, minmax(0, 1fr));
+
+        gap: 10px;
+
+        margin-top: 32px;
+    }
+
+    .support-hero-meta i {
+        display: none;
+    }
+
+    .support-hero-meta div {
+        min-width: 0;
+
+        font-size: 10px;
+    }
+
+
+    /* ========================================
+       SUPPORT CONSOLE
+    ======================================== */
+
+    .support-hero-visual {
+        position: relative;
+
+        width: 100%;
+        max-width: 100%;
+        min-width: 0;
+
+        margin-top: 55px;
+    }
+
+    .support-console {
+        width: 100%;
+        max-width: 100%;
+
+        min-width: 0;
+
+        margin: 0;
+    }
+
+
+    /* ---------- CONSOLE HEADER ---------- */
+
+    .support-console-header {
+        width: 100%;
+
+        display: flex;
+        align-items: flex-start;
+        justify-content: space-between;
+
+        gap: 12px;
+
+        flex-wrap: wrap;
+    }
+
+    .support-console-header > div:first-child {
+        min-width: 0;
+    }
+
+    .support-console-status {
+        flex-shrink: 0;
+    }
+
+
+    /* ---------- SYSTEM OVERVIEW ---------- */
+
+    .support-overview {
+        width: 100%;
+
+        display: grid;
+        grid-template-columns: 1fr;
+
+        gap: 20px;
+    }
+
+    .support-health,
+    .support-overview-info {
+        width: 100%;
+        max-width: 100%;
+
+        min-width: 0;
+    }
+
+    .support-health {
+        display: flex;
+        justify-content: flex-start;
+    }
+
+
+    /* ---------- SYSTEM ROWS ---------- */
+
+    .support-system-list {
+        width: 100%;
+    }
+
+    .support-system-row {
+        width: 100%;
+
+        display: grid;
+        grid-template-columns:
+            auto minmax(0, 1fr);
+
+        gap: 12px;
+
+        align-items: center;
+    }
+
+    .support-system-row > div:nth-child(2) {
+        min-width: 0;
+    }
+
+    .support-system-row small {
+        grid-column: 2;
+
+        justify-self: start;
+    }
+
+
+    /* ---------- RECENT ACTIVITY ---------- */
+
+    .support-activity {
+        width: 100%;
+        max-width: 100%;
+    }
+
+    .support-activity-header {
+        gap: 10px;
+
+        flex-wrap: wrap;
+    }
+
+    .support-activity-row {
+        width: 100%;
+
+        display: grid;
+        grid-template-columns:
+            auto minmax(0, 1fr);
+
+        gap: 12px;
+    }
+
+    .support-activity-row > div {
+        min-width: 0;
+    }
+
+    .support-activity-row time {
+        grid-column: 2;
+
+        justify-self: start;
+    }
+
+
+    /* ---------- FLOATING CARDS ---------- */
+
+    .support-floating-card {
+        max-width: 145px;
+
+        padding: 13px;
+    }
+
+    .support-floating-one {
+        left: 5px;
+    }
+
+    .support-floating-two {
+        right: 5px;
+    }
+
+
+    /* ========================================
+       INTRO
+    ======================================== */
+
+    .support-intro-section {
+        width: 100%;
+
+        padding: 75px 0;
+    }
+
+    .support-intro-section .section-container {
+        width: 100%;
+        max-width: 100%;
+
+        display: block;
+
+        padding-left: 20px;
+        padding-right: 20px;
+    }
+
+    .support-intro-section .web-intro-number {
+        margin-bottom: 25px;
+    }
+
+    .support-intro-section .web-intro-content {
+        width: 100%;
+        max-width: 100%;
+    }
+
+    .support-intro-section
+    .web-intro-content h2 {
+        width: 100%;
+
+        font-size: clamp(36px, 10vw, 50px);
+        line-height: 1.05;
+
+        letter-spacing: -1.5px;
+    }
+
+    .support-intro-section
+    .web-intro-content h2 span {
+        display: block;
+    }
+
+    .support-intro-section .web-intro-copy {
+        width: 100%;
+
+        display: grid;
+        grid-template-columns: 1fr;
+
+        gap: 20px;
+
+        margin-top: 30px;
+    }
+
+
+    /* ========================================
+       SUPPORT PROCESS
+    ======================================== */
+
+    .support-process-section {
+        width: 100%;
+
+        padding: 75px 0;
+    }
+
+    .support-process-section .section-container {
+        padding-left: 20px;
+        padding-right: 20px;
+    }
+
+    .support-section-heading {
+        width: 100%;
+        max-width: 100%;
+    }
+
+    .support-section-heading h2 {
+        width: 100%;
+
+        font-size: clamp(36px, 10vw, 50px);
+        line-height: 1.05;
+
+        letter-spacing: -1.5px;
+    }
+
+    .support-section-heading h2 span {
+        display: block;
+    }
+
+    .support-process {
+        width: 100%;
+
+        display: grid;
+        grid-template-columns: 1fr;
+
+        gap: 14px;
+
+        margin-top: 40px;
+    }
+
+    .support-process article {
+        width: 100%;
+        max-width: 100%;
+
+        min-width: 0;
+    }
+
+    .support-process-arrow {
+        width: 100%;
+
+        transform: rotate(90deg);
+
+        text-align: center;
+    }
+
+
+    /* ========================================
+       SUPPORT SERVICES
+    ======================================== */
+
+    .support-services-section {
+        width: 100%;
+
+        padding: 75px 0;
+    }
+
+    .support-services-section .section-container {
+        padding-left: 20px;
+        padding-right: 20px;
+    }
+
+    .support-services-section
+    .web-solutions-heading {
+        width: 100%;
+
+        display: grid;
+        grid-template-columns: 1fr;
+
+        gap: 22px;
+    }
+
+    .support-services-section
+    .web-solutions-heading > div,
+    .support-services-section
+    .web-solutions-heading > p {
+        width: 100%;
+        max-width: 100%;
+    }
+
+    .support-services-section
+    .web-solutions-heading h2 {
+        font-size: clamp(36px, 10vw, 50px);
+        line-height: 1.05;
+
+        letter-spacing: -1.5px;
+    }
+
+    .support-services-grid {
+        width: 100%;
+
+        display: grid;
+        grid-template-columns: 1fr;
+
+        gap: 14px;
+
+        margin-top: 40px;
+    }
+
+    .support-service-card {
+        width: 100%;
+        max-width: 100%;
+
+        min-width: 0;
+
+        padding: 28px 24px;
+    }
+
+    .support-service-card h3,
+    .support-service-card p {
+        max-width: 100%;
+    }
+
+
+    /* ========================================
+       STATUS / DIGITAL PARTNER SECTION
+    ======================================== */
+
+    .support-status-section {
+        width: 100%;
+
+        padding: 75px 0;
+    }
+
+    .support-status-section .section-container {
+        padding-left: 20px;
+        padding-right: 20px;
+    }
+
+    .support-status-layout {
+        width: 100%;
+
+        display: grid;
+        grid-template-columns: 1fr;
+
+        gap: 45px;
+    }
+
+    .support-status-content,
+    .support-status-panel {
+        width: 100%;
+        max-width: 100%;
+
+        min-width: 0;
+    }
+
+    .support-status-content h2 {
+        width: 100%;
+
+        font-size: clamp(36px, 10vw, 50px);
+        line-height: 1.05;
+
+        letter-spacing: -1.5px;
+    }
+
+    .support-status-content h2 span {
+        display: block;
+    }
+
+    .support-status-content
+    .service-secondary-button {
+        width: 100%;
+
+        justify-content: center;
+
+        text-align: center;
+    }
+
+
+    /* ---------- STATUS PANEL ---------- */
+
+    .support-status-panel {
+        padding: 22px 18px;
+    }
+
+    .support-status-panel-header {
+        width: 100%;
+
+        display: grid;
+        grid-template-columns: 1fr;
+
+        gap: 10px;
+    }
+
+    .support-status-panel-header > div {
+        min-width: 0;
+    }
+
+    .support-status-panel-header > small {
+        justify-self: start;
+    }
+
+    .support-status-item {
+        width: 100%;
+
+        display: flex;
+        align-items: center;
+        justify-content: space-between;
+
+        gap: 15px;
+    }
+
+    .support-status-item > div {
+        min-width: 0;
+    }
+
+    .support-status-item small {
+        flex-shrink: 0;
+
+        font-size: 9px;
+    }
+
+    .support-status-bar {
+        width: 100%;
+        max-width: 100%;
+    }
+
+
+    /* ---------- STATUS FOOTER ---------- */
+
+    .support-status-footer {
+        width: 100%;
+
+        display: grid;
+        grid-template-columns:
+            auto minmax(0, 1fr);
+
+        gap: 10px;
+
+        align-items: center;
+    }
+
+    .support-status-footer p {
+        min-width: 0;
+    }
+
+    .support-status-footer small {
+        grid-column: 2;
+
+        justify-self: start;
+    }
+
+
+    /* ========================================
+       FINAL OVERFLOW PROTECTION
+    ======================================== */
+
+    .support-hero *,
+    .support-intro-section *,
+    .support-process-section *,
+    .support-services-section *,
+    .support-status-section * {
+        max-width: 100%;
+    }
+
+}
+
+/* ========================================
+   CRM VIEW SWITCHING
+======================================== */
+
+.crm-view {
+    display: none;
+}
+
+.crm-view.active {
+    display: block;
+}
+
+/* ========================================
+   CRM ENQUIRIES VIEW
+======================================== */
+
+.crm-view-header {
+    display: flex;
+    align-items: flex-end;
+    justify-content: space-between;
+    gap: 24px;
+    margin-bottom: 32px;
+}
+
+.crm-enquiry-controls {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    gap: 18px;
+    margin-bottom: 24px;
+}
+
+.crm-enquiry-search {
+    flex: 1;
+    max-width: 520px;
+}
+
+.crm-enquiry-search input,
+.crm-enquiry-filter select {
+    width: 100%;
+    min-height: 48px;
+    padding: 0 16px;
+    border: 1px solid rgba(255, 255, 255, 0.12);
+    border-radius: 8px;
+    background: rgba(255, 255, 255, 0.04);
+    color: inherit;
+    font: inherit;
+    outline: none;
+    transition:
+        border-color 0.2s ease,
+        background 0.2s ease;
+}
+
+.crm-enquiry-search input:focus,
+.crm-enquiry-filter select:focus {
+    border-color: #00d9ff;
+    background: rgba(0, 217, 255, 0.04);
+}
+
+.crm-enquiry-search input::placeholder {
+    color: rgba(255, 255, 255, 0.4);
+}
+
+.crm-enquiry-filter {
+    min-width: 190px;
+}
+
+.crm-enquiry-filter select {
+    cursor: pointer;
+}
+
+.crm-enquiry-filter select option {
+    color: #111;
+    background: #fff;
+}
+
+.crm-all-enquiries-panel {
+    margin-top: 0;
+}
+
+.crm-enquiry-result-count {
+    font-size: 13px;
+    font-weight: 600;
+    letter-spacing: 0.04em;
+    opacity: 0.65;
+}
+
+
+/* MOBILE */
+
+@media (max-width: 700px) {
+
+    .crm-view-header {
+        align-items: flex-start;
+        flex-direction: column;
+    }
+
+    .crm-enquiry-controls {
+        align-items: stretch;
+        flex-direction: column;
+    }
+
+    .crm-enquiry-search {
+        max-width: none;
+    }
+
+    .crm-enquiry-filter {
+        width: 100%;
+        min-width: 0;
     }
 
 }
