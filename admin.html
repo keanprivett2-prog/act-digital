@@ -1,0 +1,175 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+
+    <meta
+        name="viewport"
+        content="width=device-width, initial-scale=1.0"
+    >
+
+    <meta
+        name="robots"
+        content="noindex, nofollow"
+    >
+
+    <title>Admin | ACT Digital</title>
+
+    <link
+        rel="stylesheet"
+        href="css/style.css"
+    >
+</head>
+
+
+<body class="admin-login-page">
+
+    <main class="admin-login-main">
+
+        <!-- BACKGROUND -->
+        <div class="admin-grid"></div>
+        <div class="admin-login-glow"></div>
+
+
+        <!-- LOGIN CARD -->
+        <section class="admin-login-card">
+
+            <a
+                href="index.html"
+                class="admin-login-logo"
+            >
+                <img
+                    src="assets/images/act-digital-logo.png"
+                    alt="ACT Digital"
+                >
+            </a>
+
+
+            <div class="admin-login-heading">
+
+                <p>
+                    ACT DIGITAL
+                </p>
+
+                <h1>
+                    Admin Portal
+                </h1>
+
+                <span>
+                    Sign in to access your dashboard.
+                </span>
+
+            </div>
+
+
+            <form
+                id="adminLoginForm"
+                class="admin-login-form"
+            >
+
+                <!-- EMAIL -->
+
+                <div class="admin-form-group">
+
+                    <label for="adminEmail">
+                        Email Address
+                    </label>
+
+                    <input
+                        type="email"
+                        id="adminEmail"
+                        autocomplete="email"
+                        placeholder="you@actdigital.co.za"
+                        required
+                    >
+
+                </div>
+
+
+                <!-- PASSWORD -->
+
+                <div class="admin-form-group">
+
+                    <label for="adminPassword">
+                        Password
+                    </label>
+
+                    <div class="admin-password-wrapper">
+
+                        <input
+                            type="password"
+                            id="adminPassword"
+                            autocomplete="current-password"
+                            placeholder="Enter your password"
+                            required
+                        >
+
+                        <button
+                            type="button"
+                            id="toggleAdminPassword"
+                            class="admin-password-toggle"
+                            aria-label="Show password"
+                        >
+                            SHOW
+                        </button>
+
+                    </div>
+
+                </div>
+
+
+                <!-- ERROR / STATUS -->
+
+                <div
+                    id="adminLoginStatus"
+                    class="admin-login-status"
+                    aria-live="polite"
+                ></div>
+
+
+                <!-- LOGIN -->
+
+                <button
+                    type="submit"
+                    class="admin-login-button"
+                >
+                    Sign In
+
+                    <span>→</span>
+                </button>
+
+            </form>
+
+
+            <div class="admin-login-footer">
+
+                <span class="admin-security-dot"></span>
+
+                <p>
+                    Secure ACT Digital administration
+                </p>
+
+            </div>
+
+        </section>
+
+
+        <a
+            href="index.html"
+            class="admin-return-link"
+        >
+            ← Return to ACT Digital
+        </a>
+
+    </main>
+
+
+    <script
+        type="module"
+        src="js/admin-login.js"
+    ></script>
+
+</body>
+
+</html>
