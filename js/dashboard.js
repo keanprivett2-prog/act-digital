@@ -84,11 +84,17 @@ const dashboardNavButton =
 const enquiriesNavButton =
     document.getElementById("enquiriesNavButton");
 
+    const clientsNavButton =
+    document.getElementById("clientsNavButton");
+
 const dashboardView =
     document.getElementById("dashboardView");
 
 const enquiriesView =
     document.getElementById("enquiriesView");
+
+    const clientsView =
+    document.getElementById("clientsView");
 
 const allEnquiriesTableBody =
     document.getElementById("allEnquiriesTableBody");
@@ -98,6 +104,9 @@ const enquirySearchInput =
 
 const allEnquiriesStatusFilter =
     document.getElementById("allEnquiriesStatusFilter");
+
+    const allEnquiriesSort =
+    document.getElementById("allEnquiriesSort");
 
 const enquiryResultCount =
     document.getElementById("enquiryResultCount");
@@ -113,70 +122,99 @@ function showCRMView(viewName) {
 
     if (
         !dashboardView ||
-        !enquiriesView
+        !enquiriesView ||
+        !clientsView
     ) {
         return;
     }
 
+    // ========================================
+    // HIDE ALL CRM VIEWS
+    // ========================================
 
-    const showDashboard =
-        viewName === "dashboard";
+    dashboardView.classList.remove("active");
+    enquiriesView.classList.remove("active");
+    clientsView.classList.remove("active");
 
 
-    dashboardView.classList.toggle(
-        "active",
-        showDashboard
-    );
-
-    enquiriesView.classList.toggle(
-        "active",
-        !showDashboard
-    );
-
+    // ========================================
+    // REMOVE ACTIVE NAV STATE
+    // ========================================
 
     if (dashboardNavButton) {
+        dashboardNavButton.classList.remove("active");
+    }
 
-        dashboardNavButton.classList.toggle(
-            "active",
-            showDashboard
-        );
+    if (enquiriesNavButton) {
+        enquiriesNavButton.classList.remove("active");
+    }
 
+    if (clientsNavButton) {
+        clientsNavButton.classList.remove("active");
     }
 
 
-    if (enquiriesNavButton) {
+    // ========================================
+    // SHOW SELECTED VIEW
+    // ========================================
 
-        enquiriesNavButton.classList.toggle(
-            "active",
-            !showDashboard
-        );
+    if (viewName === "dashboard") {
+
+        dashboardView.classList.add("active");
+
+        if (dashboardNavButton) {
+            dashboardNavButton.classList.add("active");
+        }
+
+    } else if (viewName === "enquiries") {
+
+        enquiriesView.classList.add("active");
+
+        if (enquiriesNavButton) {
+            enquiriesNavButton.classList.add("active");
+        }
+
+    } else if (viewName === "clients") {
+
+        clientsView.classList.add("active");
+
+        if (clientsNavButton) {
+            clientsNavButton.classList.add("active");
+        }
 
     }
 
 }
 
+// ========================================
+// CRM NAVIGATION EVENTS
+// ========================================
 
 if (dashboardNavButton) {
-
     dashboardNavButton.addEventListener(
         "click",
         () => {
             showCRMView("dashboard");
         }
     );
-
 }
 
-
 if (enquiriesNavButton) {
-
     enquiriesNavButton.addEventListener(
         "click",
         () => {
             showCRMView("enquiries");
         }
     );
+}
 
+if (clientsNavButton) {
+    clientsNavButton.addEventListener(
+        "click",
+        () => {
+            showCRMView("clients");
+        }
+    );
 }
 
 
@@ -397,6 +435,11 @@ function renderAllEnquiries() {
             ? allEnquiriesStatusFilter.value
             : "All";
 
+                const selectedSort =
+        allEnquiriesSort
+            ? allEnquiriesSort.value
+            : "newest";
+
 
     const filteredEnquiries =
         enquiries.filter(
@@ -435,6 +478,42 @@ function renderAllEnquiries() {
 
             }
         );
+
+            // ========================================
+    // SORT ENQUIRIES
+    // ========================================
+
+    filteredEnquiries.sort((a, b) => {
+
+        switch (selectedSort) {
+
+            case "oldest":
+                return getEnquiryTime(a) -
+                    getEnquiryTime(b);
+
+            case "nameAZ":
+                return (a.name || "")
+                    .localeCompare(b.name || "");
+
+            case "nameZA":
+                return (b.name || "")
+                    .localeCompare(a.name || "");
+
+            case "budgetHigh":
+                return getBudgetValue(b.budget) -
+                    getBudgetValue(a.budget);
+
+            case "budgetLow":
+                return getBudgetValue(a.budget) -
+                    getBudgetValue(b.budget);
+
+            case "newest":
+            default:
+                return getEnquiryTime(b) -
+                    getEnquiryTime(a);
+        }
+
+    });
 
 
     if (enquiryResultCount) {
@@ -603,6 +682,13 @@ if (allEnquiriesStatusFilter) {
         renderAllEnquiries
     );
 
+}
+
+if (allEnquiriesSort) {
+    allEnquiriesSort.addEventListener(
+        "change",
+        renderAllEnquiries
+    );
 }
 
 
@@ -1640,6 +1726,45 @@ logoutButton.addEventListener(
 
     }
 );
+
+// ========================================
+// ENQUIRY SORTING HELPERS
+// ========================================
+
+function getEnquiryTime(enquiry) {
+
+    if (!enquiry.createdAt) {
+        return 0;
+    }
+
+    if (
+        typeof enquiry.createdAt.toMillis ===
+        "function"
+    ) {
+        return enquiry.createdAt.toMillis();
+    }
+
+    if (enquiry.createdAt.seconds) {
+        return enquiry.createdAt.seconds * 1000;
+    }
+
+    return 0;
+}
+
+
+function getBudgetValue(budget) {
+
+    const budgetValues = {
+        "Not sure yet": 0,
+        "Under R5,000": 4999,
+        "R5,000–R10,000": 10000,
+        "R10,000–R20,000": 20000,
+        "R20,000–R40,000": 40000,
+        "R40,000+": 40001
+    };
+
+    return budgetValues[budget] ?? 0;
+}
 
 
 // ========================================

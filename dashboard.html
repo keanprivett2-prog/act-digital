@@ -114,9 +114,10 @@
 
 
                 <button
-                    class="crm-nav-item"
-                    type="button"
-                >
+    class="crm-nav-item"
+    id="clientsNavButton"
+    type="button"
+>
 
                     <span class="crm-nav-icon">
                         ◇
@@ -569,6 +570,17 @@
 
     </div>
 
+    <div class="crm-enquiry-filter">
+    <select id="allEnquiriesSort">
+        <option value="newest">Newest First</option>
+        <option value="oldest">Oldest First</option>
+        <option value="nameAZ">Name A–Z</option>
+        <option value="nameZA">Name Z–A</option>
+        <option value="budgetHigh">Budget: High to Low</option>
+        <option value="budgetLow">Budget: Low to High</option>
+    </select>
+</div>
+
 </div>
 
 <!-- ALL ENQUIRIES TABLE -->
@@ -659,6 +671,32 @@
 
 </section>
 <!-- END ENQUIRIES VIEW -->
+
+<!-- ========================================
+     CLIENTS VIEW
+======================================== -->
+
+<section id="clientsView" class="crm-view">
+
+    <div class="crm-view-header">
+
+        <div>
+
+            <p class="crm-eyebrow">
+                CLIENT MANAGEMENT
+            </p>
+
+            <h1>Clients</h1>
+
+            <p class="crm-header-description">
+                Manage ACT Digital clients and their projects.
+            </p>
+
+        </div>
+
+    </div>
+
+</section>
 
 
         </main>
