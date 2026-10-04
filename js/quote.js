@@ -147,6 +147,53 @@ if (quoteForm) {
                 }
             );
 
+                        // ========================================
+            // SEND ENQUIRY EMAILS
+            // ========================================
+
+            try {
+
+                const emailResponse = await fetch(
+                    "https://act-digital-enquiries.keanprivett2.workers.dev/",
+                    {
+                        method: "POST",
+
+                        headers: {
+                            "Content-Type": "application/json"
+                        },
+
+                        body: JSON.stringify({
+                            name: name,
+                            business: business,
+                            email: email,
+                            phone: phone,
+                            services: selectedServices,
+                            website: website,
+                            budget: budget,
+                            message: message
+                        })
+                    }
+                );
+
+                const emailResult =
+                    await emailResponse.json();
+
+                if (!emailResponse.ok) {
+                    console.error(
+                        "ACT Digital email notification failed:",
+                        emailResult
+                    );
+                }
+
+            } catch (emailError) {
+
+                console.error(
+                    "ACT Digital email notification error:",
+                    emailError
+                );
+
+            }
+
 
             // --------------------------------
             // SUCCESS
