@@ -96,6 +96,22 @@ const enquiriesView =
     const clientsView =
     document.getElementById("clientsView");
 
+    // ========================================
+// CLIENT ELEMENTS
+// ========================================
+
+const clientSearchInput =
+    document.getElementById("clientSearchInput");
+
+const clientStatusFilter =
+    document.getElementById("clientStatusFilter");
+
+const clientResultCount =
+    document.getElementById("clientResultCount");
+
+const clientsTableBody =
+    document.getElementById("clientsTableBody");
+
 const allEnquiriesTableBody =
     document.getElementById("allEnquiriesTableBody");
 
@@ -245,9 +261,226 @@ onAuthStateChanged(
 
 
         loadEnquiries();
+        loadClients();
 
     }
 );
+
+// ========================================
+// CLIENT DATA
+// ========================================
+
+let allClients = [];
+
+
+// ========================================
+// LOAD CLIENTS
+// ========================================
+
+function loadClients() {
+
+    const clientsQuery = query(
+        collection(db, "clients"),
+        orderBy("createdAt", "desc")
+    );
+
+    onSnapshot(
+        clientsQuery,
+        (snapshot) => {
+
+            allClients = [];
+
+            snapshot.forEach((docSnapshot) => {
+
+                allClients.push({
+                    id: docSnapshot.id,
+                    ...docSnapshot.data()
+                });
+
+            });
+
+            renderClients();
+
+        },
+        (error) => {
+
+            console.error(
+                "Error loading clients:",
+                error
+            );
+
+        }
+    );
+
+}
+
+// ========================================
+// RENDER CLIENTS
+// ========================================
+
+function renderClients() {
+
+    if (!clientsTableBody) {
+        return;
+    }
+
+    const searchValue =
+        clientSearchInput?.value
+            .trim()
+            .toLowerCase() || "";
+
+    const selectedStatus =
+        clientStatusFilter?.value || "All";
+
+
+    let filteredClients =
+        allClients.filter((client) => {
+
+            const name =
+                (client.name || "")
+                    .toLowerCase();
+
+            const business =
+                (client.business || "")
+                    .toLowerCase();
+
+            const email =
+                (client.email || "")
+                    .toLowerCase();
+
+
+            const matchesSearch =
+                !searchValue ||
+                name.includes(searchValue) ||
+                business.includes(searchValue) ||
+                email.includes(searchValue);
+
+
+            const matchesStatus =
+                selectedStatus === "All" ||
+                client.status === selectedStatus;
+
+
+            return (
+                matchesSearch &&
+                matchesStatus
+            );
+
+        });
+
+
+    // ========================================
+    // RESULT COUNT
+    // ========================================
+
+    if (clientResultCount) {
+
+        clientResultCount.textContent =
+            `${filteredClients.length} ${
+                filteredClients.length === 1
+                    ? "client"
+                    : "clients"
+            }`;
+
+    }
+
+
+    // ========================================
+    // EMPTY STATE
+    // ========================================
+
+    if (filteredClients.length === 0) {
+
+        clientsTableBody.innerHTML = `
+            <tr>
+                <td colspan="6">
+                    <div class="crm-empty-state">
+                        No clients found.
+                    </div>
+                </td>
+            </tr>
+        `;
+
+        return;
+
+    }
+
+
+    // ========================================
+    // CLIENT ROWS
+    // ========================================
+
+    clientsTableBody.innerHTML = "";
+
+    filteredClients.forEach((client) => {
+
+        const row =
+            document.createElement("tr");
+
+        const services =
+            Array.isArray(client.services)
+                ? client.services.join(", ")
+                : client.services || "—";
+
+        const createdDate =
+            client.createdAt?.toDate
+                ? client.createdAt
+                    .toDate()
+                    .toLocaleDateString("en-ZA")
+                : "—";
+
+
+        row.innerHTML = `
+
+            <td>
+                <strong>
+                    ${escapeHTML(client.name || "Unknown")}
+                </strong>
+
+                <div class="crm-table-secondary">
+                    ${escapeHTML(client.business || "—")}
+                </div>
+            </td>
+
+            <td>
+                ${escapeHTML(client.email || "—")}
+
+                <div class="crm-table-secondary">
+                    ${escapeHTML(client.phone || "—")}
+                </div>
+            </td>
+
+            <td>
+                ${escapeHTML(services)}
+            </td>
+
+            <td>
+                <span class="status-badge">
+                    ${escapeHTML(client.status || "Active")}
+                </span>
+            </td>
+
+            <td>
+                ${createdDate}
+            </td>
+
+            <td>
+                <button
+                    type="button"
+                    class="crm-view-button"
+                    data-client-id="${client.id}"
+                >
+                    View
+                </button>
+            </td>
+
+        `;
+
+        clientsTableBody.appendChild(row);
+
+    });
+
+}
 
 
 // ========================================

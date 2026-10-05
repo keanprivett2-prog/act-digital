@@ -694,6 +694,94 @@
 
         </div>
 
+        <!-- ========================================
+     CLIENT CONTROLS
+======================================== -->
+
+<div class="crm-enquiry-controls">
+
+    <div class="crm-enquiry-search">
+
+        <input
+            type="search"
+            id="clientSearchInput"
+            placeholder="Search client, business or email..."
+            autocomplete="off"
+        >
+
+    </div>
+
+    <div class="crm-enquiry-filter">
+
+        <select id="clientStatusFilter">
+            <option value="All">
+                All Clients
+            </option>
+
+            <option value="Active">
+                Active
+            </option>
+
+            <option value="Inactive">
+                Inactive
+            </option>
+        </select>
+
+    </div>
+
+    <!-- ========================================
+     CLIENTS TABLE
+======================================== -->
+
+<div class="crm-table-card">
+
+    <div class="crm-table-header">
+
+        <div>
+            <h2>All Clients</h2>
+
+            <p id="clientResultCount">
+                0 clients
+            </p>
+        </div>
+
+    </div>
+
+    <div class="crm-table-wrapper">
+
+        <table class="crm-table">
+
+            <thead>
+                <tr>
+                    <th>Client</th>
+                    <th>Contact</th>
+                    <th>Services</th>
+                    <th>Status</th>
+                    <th>Since</th>
+                    <th></th>
+                </tr>
+            </thead>
+
+            <tbody id="clientsTableBody">
+
+                <tr>
+                    <td colspan="6">
+                        <div class="crm-empty-state">
+                            No clients yet.
+                        </div>
+                    </td>
+                </tr>
+
+            </tbody>
+
+        </table>
+
+    </div>
+
+</div>
+
+</div>
+
     </div>
 
 </section>
