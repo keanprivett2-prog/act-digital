@@ -199,6 +199,13 @@ if (quoteForm) {
             // SUCCESS
             // --------------------------------
 
+            // Track successful enquiry in Google Analytics
+if (typeof gtag === "function") {
+    gtag("event", "generate_lead", {
+        method: "quote_form"
+    });
+}
+
             showStatus(
                 `Thanks ${name}! Your project enquiry has been received. ACT Digital will be in touch shortly.`,
                 "success"
