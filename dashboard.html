@@ -1,0 +1,858 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+
+    <meta charset="UTF-8">
+
+    <meta
+        name="viewport"
+        content="width=device-width, initial-scale=1.0"
+    >
+
+    <meta
+        name="robots"
+        content="noindex, nofollow"
+    >
+
+    <title>CRM Dashboard | ACT Digital</title>
+
+    <link
+        rel="stylesheet"
+        href="css/style.css"
+    >
+
+</head>
+
+
+<body class="crm-page">
+
+
+    <div class="crm-layout">
+
+
+        <!-- =========================
+             SIDEBAR
+        ========================== -->
+
+        <aside class="crm-sidebar">
+
+
+            <div class="crm-sidebar-top">
+
+                <a
+                    href="index.html"
+                    class="crm-logo"
+                >
+
+                    <img
+                        src="assets/images/act-digital-logo.png"
+                        alt="ACT Digital"
+                    >
+
+                </a>
+
+
+                <div class="crm-workspace">
+
+                    <span>
+                        WORKSPACE
+                    </span>
+
+                    <strong>
+                        ACT Digital
+                    </strong>
+
+                </div>
+
+            </div>
+
+
+
+            <nav class="crm-nav">
+
+                <p class="crm-nav-label">
+                    MANAGEMENT
+                </p>
+
+
+                <button
+    class="crm-nav-item active"
+    id="dashboardNavButton"
+    type="button"
+>
+
+    <span class="crm-nav-icon">
+        ◫
+    </span>
+
+    Dashboard
+
+</button>
+
+
+                <button
+    class="crm-nav-item"
+    id="enquiriesNavButton"
+    type="button"
+>
+
+    <span class="crm-nav-icon">
+        ◎
+    </span>
+
+    Enquiries
+
+    <span
+        class="crm-nav-count"
+        id="sidebarNewCount"
+    >
+        0
+    </span>
+
+</button>
+
+
+                <button
+    class="crm-nav-item"
+    id="clientsNavButton"
+    type="button"
+>
+
+                    <span class="crm-nav-icon">
+                        ◇
+                    </span>
+
+                    Clients
+
+                </button>
+
+
+                <button
+                    class="crm-nav-item"
+                    type="button"
+                >
+
+                    <span class="crm-nav-icon">
+                        □
+                    </span>
+
+                    Quotes
+
+                </button>
+
+
+                <p class="crm-nav-label crm-nav-label-secondary">
+                    WEBSITE
+                </p>
+
+
+                <a
+                    href="index.html"
+                    class="crm-nav-item"
+                    target="_blank"
+                >
+
+                    <span class="crm-nav-icon">
+                        ↗
+                    </span>
+
+                    View Website
+
+                </a>
+
+            </nav>
+
+
+
+            <div class="crm-sidebar-bottom">
+
+                <div class="crm-admin-profile">
+
+                    <div class="crm-admin-avatar">
+                        A
+                    </div>
+
+                    <div>
+
+                        <strong>
+                            ACT Admin
+                        </strong>
+
+                        <span id="adminUserEmail">
+                            Loading...
+                        </span>
+
+                    </div>
+
+                </div>
+
+
+                <button
+                    id="logoutButton"
+                    class="crm-logout-button"
+                    type="button"
+                >
+                    Sign Out
+                    <span>→</span>
+                </button>
+
+            </div>
+
+
+        </aside>
+
+
+
+        <!-- =========================
+             MAIN
+        ========================== -->
+
+        <main class="crm-main">
+
+
+            <!-- HEADER -->
+
+            <header class="crm-header">
+
+                <div>
+
+                    <p class="crm-eyebrow">
+                        ACT DIGITAL CRM
+                    </p>
+
+                    <h1>
+                        Dashboard
+                    </h1>
+
+                    <p class="crm-header-description">
+                        Manage enquiries, opportunities and
+                        client relationships.
+                    </p>
+
+                </div>
+
+
+                <div class="crm-header-right">
+
+                    <div class="crm-live-status">
+
+                        <span></span>
+
+                        Live
+
+                    </div>
+
+                    <a
+                        href="quote.html"
+                        class="crm-new-enquiry-button"
+                        target="_blank"
+                    >
+                        + New Enquiry
+                    </a>
+
+                </div>
+
+            </header>
+
+<section
+    id="dashboardView"
+    class="crm-view active"
+>
+
+            <!-- =========================
+                 STAT CARDS
+            ========================== -->
+
+            <section class="crm-stats">
+
+
+                <article class="crm-stat-card">
+
+                    <div class="crm-stat-top">
+
+                        <span>
+                            TOTAL ENQUIRIES
+                        </span>
+
+                        <strong>
+                            01
+                        </strong>
+
+                    </div>
+
+                    <h2 id="totalEnquiries">
+                        0
+                    </h2>
+
+                    <p>
+                        All project enquiries
+                    </p>
+
+                </article>
+
+
+
+                <article class="crm-stat-card crm-stat-highlight">
+
+                    <div class="crm-stat-top">
+
+                        <span>
+                            NEW LEADS
+                        </span>
+
+                        <strong>
+                            02
+                        </strong>
+
+                    </div>
+
+                    <h2 id="newEnquiries">
+                        0
+                    </h2>
+
+                    <p>
+                        Awaiting first contact
+                    </p>
+
+                </article>
+
+
+
+                <article class="crm-stat-card">
+
+                    <div class="crm-stat-top">
+
+                        <span>
+                            QUOTES SENT
+                        </span>
+
+                        <strong>
+                            03
+                        </strong>
+
+                    </div>
+
+                    <h2 id="quotesSent">
+                        0
+                    </h2>
+
+                    <p>
+                        Active proposals
+                    </p>
+
+                </article>
+
+
+
+                <article class="crm-stat-card">
+
+                    <div class="crm-stat-top">
+
+                        <span>
+                            WON
+                        </span>
+
+                        <strong>
+                            04
+                        </strong>
+
+                    </div>
+
+                    <h2 id="wonEnquiries">
+                        0
+                    </h2>
+
+                    <p>
+                        Converted projects
+                    </p>
+
+                </article>
+
+
+            </section>
+
+
+
+            <!-- =========================
+                 ENQUIRIES
+            ========================== -->
+
+            <section class="crm-enquiries-panel">
+
+
+                <div class="crm-panel-header">
+
+                    <div>
+
+                        <p class="crm-panel-label">
+                            PIPELINE
+                        </p>
+
+                        <h2>
+                            Recent Enquiries
+                        </h2>
+
+                    </div>
+
+
+                    <div class="crm-panel-actions">
+
+                        <select id="enquiryStatusFilter">
+
+                            <option value="All">
+                                All Statuses
+                            </option>
+
+                            <option value="New">
+                                New
+                            </option>
+
+                            <option value="Contacted">
+                                Contacted
+                            </option>
+
+                            <option value="Quote Sent">
+                                Quote Sent
+                            </option>
+
+                            <option value="Won">
+                                Won
+                            </option>
+
+                            <option value="Lost">
+                                Lost
+                            </option>
+
+                        </select>
+
+                    </div>
+
+                </div>
+
+
+
+                <div class="crm-table-wrapper">
+
+                    <table class="crm-table">
+
+                        <thead>
+
+                            <tr>
+
+                                <th>
+                                    CLIENT
+                                </th>
+
+                                <th>
+                                    SERVICES
+                                </th>
+
+                                <th>
+                                    BUDGET
+                                </th>
+
+                                <th>
+                                    RECEIVED
+                                </th>
+
+                                <th>
+                                    STATUS
+                                </th>
+
+                                <th>
+                                    ACTION
+                                </th>
+
+                            </tr>
+
+                        </thead>
+
+
+                        <tbody id="enquiriesTableBody">
+
+                            <tr>
+
+                                <td
+                                    colspan="6"
+                                    class="crm-loading-row"
+                                >
+                                    Loading enquiries...
+                                </td>
+
+                            </tr>
+
+                        </tbody>
+
+                    </table>
+
+                                </div>
+
+            </section>
+
+        </section>
+        <!-- END DASHBOARD VIEW -->
+
+        <!-- =========================
+     ENQUIRIES VIEW
+========================== -->
+
+<section
+    id="enquiriesView"
+    class="crm-view"
+>
+
+    <div class="crm-view-header">
+
+        <div>
+
+            <p class="crm-eyebrow">
+                LEAD MANAGEMENT
+            </p>
+
+            <h1>
+                Enquiries
+            </h1>
+
+            <p class="crm-header-description">
+                View, search and manage all project enquiries.
+            </p>
+
+        </div>
+
+    </div>
+
+    <!-- ENQUIRY CONTROLS -->
+
+<div class="crm-enquiry-controls">
+
+    <div class="crm-enquiry-search">
+
+        <input
+            type="search"
+            id="enquirySearchInput"
+            placeholder="Search name, business or email..."
+            autocomplete="off"
+        >
+
+    </div>
+
+
+    <div class="crm-enquiry-filter">
+
+        <select id="allEnquiriesStatusFilter">
+
+            <option value="All">
+                All Statuses
+            </option>
+
+            <option value="New">
+                New
+            </option>
+
+            <option value="Contacted">
+                Contacted
+            </option>
+
+            <option value="Quote Sent">
+                Quote Sent
+            </option>
+
+            <option value="Won">
+                Won
+            </option>
+
+            <option value="Lost">
+                Lost
+            </option>
+
+        </select>
+
+    </div>
+
+    <div class="crm-enquiry-filter">
+    <select id="allEnquiriesSort">
+        <option value="newest">Newest First</option>
+        <option value="oldest">Oldest First</option>
+        <option value="nameAZ">Name A–Z</option>
+        <option value="nameZA">Name Z–A</option>
+        <option value="budgetHigh">Budget: High to Low</option>
+        <option value="budgetLow">Budget: Low to High</option>
+    </select>
+</div>
+
+</div>
+
+<!-- ALL ENQUIRIES TABLE -->
+
+<section class="crm-enquiries-panel crm-all-enquiries-panel">
+
+    <div class="crm-panel-header">
+
+        <div>
+
+            <p class="crm-panel-label">
+                ALL LEADS
+            </p>
+
+            <h2>
+                Project Enquiries
+            </h2>
+
+        </div>
+
+        <span
+            class="crm-enquiry-result-count"
+            id="enquiryResultCount"
+        >
+            0 enquiries
+        </span>
+
+    </div>
+
+
+    <div class="crm-table-wrapper">
+
+        <table class="crm-table">
+
+            <thead>
+
+                <tr>
+
+                    <th>
+                        CLIENT
+                    </th>
+
+                    <th>
+                        SERVICES
+                    </th>
+
+                    <th>
+                        BUDGET
+                    </th>
+
+                    <th>
+                        RECEIVED
+                    </th>
+
+                    <th>
+                        STATUS
+                    </th>
+
+                    <th>
+                        ACTION
+                    </th>
+
+                </tr>
+
+            </thead>
+
+
+            <tbody id="allEnquiriesTableBody">
+
+                <tr>
+
+                    <td
+                        colspan="6"
+                        class="crm-loading-row"
+                    >
+                        Loading enquiries...
+                    </td>
+
+                </tr>
+
+            </tbody>
+
+        </table>
+
+    </div>
+
+</section>
+
+</section>
+<!-- END ENQUIRIES VIEW -->
+
+<!-- ========================================
+     CLIENTS VIEW
+======================================== -->
+
+<section id="clientsView" class="crm-view">
+
+    <div class="crm-view-header">
+
+        <div>
+
+            <p class="crm-eyebrow">
+                CLIENT MANAGEMENT
+            </p>
+
+            <h1>Clients</h1>
+
+            <p class="crm-header-description">
+                Manage ACT Digital clients and their projects.
+            </p>
+
+        </div>
+
+        <!-- ========================================
+     CLIENT CONTROLS
+======================================== -->
+
+<div class="crm-enquiry-controls">
+
+    <div class="crm-enquiry-search">
+
+        <input
+            type="search"
+            id="clientSearchInput"
+            placeholder="Search client, business or email..."
+            autocomplete="off"
+        >
+
+    </div>
+
+    <div class="crm-enquiry-filter">
+
+        <select id="clientStatusFilter">
+            <option value="All">
+                All Clients
+            </option>
+
+            <option value="Active">
+                Active
+            </option>
+
+            <option value="Inactive">
+                Inactive
+            </option>
+        </select>
+
+    </div>
+
+    <!-- ========================================
+     CLIENTS TABLE
+======================================== -->
+
+<div class="crm-table-card">
+
+    <div class="crm-table-header">
+
+        <div>
+            <h2>All Clients</h2>
+
+            <p id="clientResultCount">
+                0 clients
+            </p>
+        </div>
+
+    </div>
+
+    <div class="crm-table-wrapper">
+
+        <table class="crm-table">
+
+            <thead>
+                <tr>
+                    <th>Client</th>
+                    <th>Contact</th>
+                    <th>Services</th>
+                    <th>Status</th>
+                    <th>Since</th>
+                    <th></th>
+                </tr>
+            </thead>
+
+            <tbody id="clientsTableBody">
+
+                <tr>
+                    <td colspan="6">
+                        <div class="crm-empty-state">
+                            No clients yet.
+                        </div>
+                    </td>
+                </tr>
+
+            </tbody>
+
+        </table>
+
+    </div>
+
+</div>
+
+</div>
+
+    </div>
+
+</section>
+
+
+        </main>
+
+
+    </div>
+
+
+
+    <!-- =========================
+         ENQUIRY MODAL
+    ========================== -->
+
+    <div
+        class="crm-modal-overlay"
+        id="enquiryModal"
+    >
+
+        <div class="crm-modal">
+
+
+            <div class="crm-modal-header">
+
+                <div>
+
+                    <p>
+                        PROJECT ENQUIRY
+                    </p>
+
+                    <h2 id="modalClientName">
+                        Client
+                    </h2>
+
+                </div>
+
+
+                <button
+                    id="closeEnquiryModal"
+                    class="crm-modal-close"
+                    type="button"
+                    aria-label="Close enquiry"
+                >
+                    ×
+                </button>
+
+            </div>
+
+
+
+            <div
+                class="crm-modal-content"
+                id="modalContent"
+            >
+            </div>
+
+
+        </div>
+
+    </div>
+
+
+
+    <script
+        type="module"
+        src="js/dashboard.js"
+    ></script>
+
+
+</body>
+
+</html>
