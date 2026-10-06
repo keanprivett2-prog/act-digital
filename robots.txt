@@ -1,0 +1,7 @@
+User-agent: *
+Allow: /
+
+Disallow: /admin.html
+Disallow: /dashboard.html
+
+Sitemap: https://www.actdigital.co.za/sitemap.xml
