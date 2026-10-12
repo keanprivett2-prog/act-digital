@@ -4,6 +4,28 @@
 ======================================== */
 
 
+/* ========================================
+   ACT DIGITAL — NEW DESIGN SYSTEM
+======================================== */
+
+:root {
+    --act-dark: #0B1220;
+    --act-blue: #2563EB;
+    --act-blue-hover: #1D4ED8;
+    --act-light: #F7F9FC;
+    --act-grey: #E8EDF5;
+    --act-white: #FFFFFF;
+
+    --act-text-dark: #172033;
+    --act-text-muted: #64748B;
+
+    --act-border: #DCE4EF;
+
+    --act-radius: 16px;
+    --act-radius-large: 24px;
+}
+
+
 /* ---------- RESET ---------- */
 
 * {
@@ -893,11 +915,8 @@ button {
 
 .services-grid {
     display: grid;
-
-    grid-template-columns:
-        repeat(10, 1fr);
-
-    gap: 18px;
+    grid-template-columns: repeat(3, minmax(0, 1fr));
+    gap: 24px;
 }
 
 
@@ -906,7 +925,7 @@ button {
 .service-card {
     position: relative;
 
-    grid-column: span 2;
+    grid-column: auto;
 
     min-height: 430px;
 
@@ -1147,51 +1166,23 @@ button {
    SERVICES RESPONSIVE
 ======================================== */
 
-@media (max-width: 1200px) {
+/* Tablet - 2 cards per row */
+@media (max-width: 950px) {
 
     .services-grid {
-        grid-template-columns:
-            repeat(6, 1fr);
+        grid-template-columns: repeat(2, minmax(0, 1fr));
     }
 
     .service-card {
-        grid-column: span 2;
+        grid-column: auto;
     }
-
-    .service-card:nth-child(4) {
-        grid-column:
-            2 / span 2;
-    }
-
-}
-
-
-@media (max-width: 800px) {
 
     .services-section {
-        padding:
-            100px 5%
-            110px;
+        padding: 100px 5% 110px;
     }
-
-    .services-grid {
-        grid-template-columns:
-            repeat(2, 1fr);
-    }
-
-    .service-card,
-    .service-card:nth-child(4) {
-        grid-column: span 1;
-    }
-
-    .service-card:last-child {
-        grid-column:
-            1 / -1;
-    }
-
 }
 
-
+/* Mobile - 1 card per row */
 @media (max-width: 550px) {
 
     .section-heading {
@@ -1210,16 +1201,9 @@ button {
         grid-template-columns: 1fr;
     }
 
-    .service-card,
-    .service-card:nth-child(4),
-    .service-card:last-child {
-        grid-column: auto;
-    }
-
     .service-card {
         min-height: 370px;
     }
-
 }
 
 /* ========================================
@@ -16628,3 +16612,2234 @@ select option:checked {
 
 }
 
+/* ========================================
+   ACT DIGITAL — PREMIUM HERO DETAILS
+======================================== */
+
+.hero-reassurance {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 12px;
+
+    margin-top: 28px;
+
+    color: #A9B8CE;
+    font-size: 13px;
+    font-weight: 400;
+    letter-spacing: 0.2px;
+}
+
+.hero-reassurance::before {
+    content: "✓";
+
+    display: flex;
+    align-items: center;
+    justify-content: center;
+
+    width: 22px;
+    height: 22px;
+
+    flex-shrink: 0;
+
+    border-radius: 50%;
+
+    background: rgba(37, 99, 235, 0.15);
+    border: 1px solid rgba(147, 180, 255, 0.3);
+
+    color: #93B4FF;
+    font-size: 12px;
+    font-weight: 700;
+}
+
+@media (max-width: 550px) {
+    .hero-reassurance {
+        max-width: 300px;
+        margin: 25px auto 0;
+
+        font-size: 12px;
+        line-height: 1.6;
+        text-align: left;
+    }
+}
+
+/* ========================================
+   ACT DIGITAL — PREMIUM WEBSITE SHOWCASE
+======================================== */
+
+.website-showcase {
+    position: relative;
+    padding: 130px 5% 140px;
+    background: #F7F9FC;
+    color: #172033;
+    overflow: hidden;
+}
+
+.showcase-container {
+    width: min(1250px, 100%);
+    margin: 0 auto;
+}
+
+/* HEADING */
+
+.showcase-heading {
+    max-width: 850px;
+    margin: 0 auto 75px;
+    text-align: center;
+}
+
+.showcase-eyebrow {
+    display: inline-block;
+    margin-bottom: 22px;
+    color: #2563EB;
+    font-size: 12px;
+    font-weight: 800;
+    letter-spacing: 3px;
+}
+
+.showcase-heading h2 {
+    font-size: clamp(38px, 5.5vw, 72px);
+    font-weight: 800;
+    line-height: 1.1;
+    letter-spacing: -2.5px;
+}
+
+.showcase-heading h2 span {
+    display: block;
+    margin-top: 8px;
+    color: #2563EB;
+}
+
+.showcase-heading p {
+    max-width: 680px;
+    margin: 28px auto 0;
+    color: #64748B;
+    font-size: 18px;
+    line-height: 1.8;
+}
+
+/* SHOWCASE STAGE */
+
+.showcase-stage {
+    position: relative;
+    max-width: 1100px;
+    margin: 0 auto;
+    padding: 35px 95px 55px 0;
+}
+
+.showcase-stage::before {
+    content: "";
+    position: absolute;
+    inset: 8% 5%;
+    background: rgba(37, 99, 235, 0.13);
+    filter: blur(100px);
+    border-radius: 50%;
+    pointer-events: none;
+}
+
+/* DESKTOP BROWSER */
+
+.showcase-desktop {
+    position: relative;
+    z-index: 1;
+    width: 100%;
+    overflow: hidden;
+    background: #FFFFFF;
+    border: 1px solid #DCE4EF;
+    border-radius: 18px;
+    box-shadow:
+        0 35px 90px rgba(15, 23, 42, 0.13),
+        0 8px 25px rgba(15, 23, 42, 0.05);
+    transform: perspective(1400px) rotateY(-3deg);
+    transition: transform 0.5s ease;
+}
+
+.showcase-desktop:hover {
+    transform: perspective(1400px) rotateY(0);
+}
+
+.showcase-browser-bar {
+    height: 52px;
+    padding: 0 22px;
+    display: flex;
+    align-items: center;
+    gap: 20px;
+    background: #E8EDF5;
+    border-bottom: 1px solid #DCE4EF;
+}
+
+.showcase-browser-dots {
+    display: flex;
+    gap: 7px;
+}
+
+.showcase-browser-dots span {
+    width: 10px;
+    height: 10px;
+    border-radius: 50%;
+    background: #A8B5C8;
+}
+
+.showcase-browser-address {
+    flex: 1;
+    max-width: 320px;
+    margin: 0 auto;
+    padding: 9px 18px;
+    border: 1px solid #DCE4EF;
+    border-radius: 7px;
+    background: #FFFFFF;
+    color: #64748B;
+    font-size: 10px;
+    font-weight: 700;
+    letter-spacing: 2px;
+    text-align: center;
+}
+
+/* DESKTOP SCREEN */
+
+.showcase-desktop-screen {
+    position: relative;
+    min-height: 490px;
+    padding: 75px 9%;
+    display: flex;
+    flex-direction: column;
+    align-items: flex-start;
+    justify-content: center;
+    overflow: hidden;
+    background:
+        radial-gradient(
+            circle at 85% 30%,
+            rgba(37, 99, 235, 0.25),
+            transparent 45%
+        ),
+        linear-gradient(
+            135deg,
+            #0B1220,
+            #162847
+        );
+    color: #FFFFFF;
+}
+
+.showcase-desktop-screen::after {
+    content: "";
+    position: absolute;
+    width: 320px;
+    height: 320px;
+    right: -80px;
+    bottom: -160px;
+    border: 1px solid rgba(147, 180, 255, 0.2);
+    border-radius: 50%;
+    box-shadow:
+        0 0 0 55px rgba(37, 99, 235, 0.04),
+        0 0 0 110px rgba(37, 99, 235, 0.025);
+    pointer-events: none;
+}
+
+.showcase-preview-label {
+    position: relative;
+    z-index: 1;
+    margin-bottom: 25px;
+    color: #93B4FF;
+    font-size: 11px;
+    font-weight: 800;
+    letter-spacing: 3px;
+}
+
+.showcase-desktop-screen h3 {
+    position: relative;
+    z-index: 1;
+    max-width: 650px;
+    font-size: clamp(36px, 4.5vw, 65px);
+    line-height: 1.1;
+    letter-spacing: -2px;
+}
+
+.showcase-desktop-screen h3 span {
+    display: block;
+    color: #93B4FF;
+}
+
+.showcase-desktop-screen p {
+    position: relative;
+    z-index: 1;
+    max-width: 420px;
+    margin-top: 25px;
+    color: #BAC8DC;
+    font-size: 16px;
+    line-height: 1.7;
+}
+
+.showcase-preview-button {
+    position: relative;
+    z-index: 1;
+    display: inline-flex;
+    margin-top: 30px;
+    padding: 15px 25px;
+    border-radius: 8px;
+    background: #2563EB;
+    color: #FFFFFF;
+    font-size: 13px;
+    font-weight: 700;
+}
+
+/* MOBILE MOCKUP */
+
+.showcase-mobile {
+    position: absolute;
+    z-index: 3;
+    right: 0;
+    bottom: 0;
+    width: 235px;
+    height: 425px;
+    padding: 9px;
+    overflow: hidden;
+    border: 5px solid #172033;
+    border-radius: 35px;
+    background: #172033;
+    box-shadow: 0 25px 65px rgba(15, 23, 42, 0.3);
+    transform: rotate(5deg);
+    transition: transform 0.4s ease;
+}
+
+.showcase-mobile:hover {
+    transform: rotate(0) translateY(-10px);
+}
+
+.showcase-mobile-notch {
+    position: absolute;
+    z-index: 5;
+    top: 10px;
+    left: 50%;
+    width: 75px;
+    height: 17px;
+    transform: translateX(-50%);
+    border-radius: 0 0 13px 13px;
+    background: #172033;
+}
+
+.showcase-mobile-screen {
+    height: 100%;
+    padding: 85px 20px 25px;
+    border-radius: 23px;
+    background:
+        radial-gradient(
+            circle at 75% 25%,
+            rgba(37, 99, 235, 0.18),
+            transparent 50%
+        ),
+        #F7F9FC;
+    color: #172033;
+}
+
+.showcase-mobile-screen > span {
+    color: #2563EB;
+    font-size: 10px;
+    font-weight: 800;
+    letter-spacing: 2px;
+}
+
+.showcase-mobile-screen h3 {
+    margin: 25px 0;
+    font-size: 28px;
+    line-height: 1.15;
+    letter-spacing: -1px;
+}
+
+.showcase-mobile-line {
+    width: 100%;
+    height: 7px;
+    margin-bottom: 9px;
+    border-radius: 10px;
+    background: #DCE4EF;
+}
+
+.showcase-mobile-line.short {
+    width: 65%;
+}
+
+.showcase-mobile-button {
+    display: inline-block;
+    margin-top: 28px;
+    padding: 12px 16px;
+    border-radius: 7px;
+    background: #2563EB;
+    color: #FFFFFF;
+    font-size: 11px;
+    font-weight: 700;
+}
+
+/* CAPTION */
+
+.showcase-caption {
+    margin-top: 45px;
+    color: #64748B;
+    font-size: 12px;
+    line-height: 1.6;
+    text-align: center;
+}
+
+/* RESPONSIVE */
+
+@media (max-width: 800px) {
+    .website-showcase {
+        padding: 95px 5% 105px;
+    }
+
+    .showcase-heading {
+        margin-bottom: 50px;
+    }
+
+    .showcase-heading p {
+        font-size: 16px;
+    }
+
+    .showcase-stage {
+        padding: 20px 50px 45px 0;
+    }
+
+    .showcase-desktop-screen {
+        min-height: 380px;
+        padding: 55px 8%;
+    }
+
+    .showcase-mobile {
+        width: 165px;
+        height: 310px;
+        border-radius: 27px;
+    }
+
+    .showcase-mobile-screen {
+        padding: 65px 13px 15px;
+        border-radius: 17px;
+    }
+
+    .showcase-mobile-screen h3 {
+        font-size: 20px;
+    }
+
+    .showcase-mobile-button {
+        margin-top: 18px;
+    }
+}
+
+@media (max-width: 550px) {
+    .showcase-heading h2 {
+        font-size: 38px;
+        letter-spacing: -1.5px;
+    }
+
+    .showcase-stage {
+        padding: 0 0 155px;
+    }
+
+    .showcase-desktop {
+        transform: none;
+    }
+
+    .showcase-desktop-screen {
+        min-height: 340px;
+        padding: 45px 25px;
+    }
+
+    .showcase-desktop-screen h3 {
+        font-size: 34px;
+    }
+
+    .showcase-desktop-screen p {
+        font-size: 13px;
+    }
+
+    .showcase-browser-address {
+        font-size: 8px;
+        letter-spacing: 1px;
+    }
+
+    .showcase-mobile {
+        right: 8px;
+        bottom: 0;
+        width: 145px;
+        height: 255px;
+        transform: rotate(4deg);
+    }
+
+    .showcase-mobile-screen {
+        padding: 55px 10px 12px;
+    }
+
+    .showcase-mobile-screen h3 {
+        margin: 15px 0;
+        font-size: 17px;
+    }
+
+    .showcase-mobile-button {
+        margin-top: 12px;
+        padding: 9px 10px;
+        font-size: 9px;
+    }
+}
+
+@media (prefers-reduced-motion: reduce) {
+    .showcase-desktop,
+    .showcase-mobile {
+        transition: none;
+        transform: none;
+    }
+}
+
+/* ========================================
+   ACT DIGITAL — PREMIUM SERVICES V2
+======================================== */
+
+.services-section {
+    padding: 135px 5% 150px;
+
+    background:
+        radial-gradient(
+            circle at 85% 10%,
+            rgba(37, 99, 235, 0.12),
+            transparent 35%
+        ),
+        #101827;
+
+    border-top: 1px solid rgba(255, 255, 255, 0.06);
+}
+
+/* SECTION HEADING */
+
+.services-section .section-label {
+    color: #93B4FF;
+    font-size: 12px;
+    letter-spacing: 3px;
+}
+
+.services-section .section-heading h2 {
+    color: #FFFFFF;
+    font-size: clamp(40px, 5vw, 68px);
+    line-height: 1.1;
+    letter-spacing: -2.5px;
+}
+
+.services-section .section-heading h2 span {
+    color: #93B4FF;
+}
+
+.services-section .section-intro {
+    color: #A9B8CE;
+    font-size: 17px;
+    line-height: 1.8;
+}
+
+/* SERVICE CARDS */
+
+.services-section .service-card {
+    min-height: 420px;
+    padding: 35px 28px;
+
+    background: linear-gradient(
+        145deg,
+        #1A263B,
+        #131F31
+    );
+
+    border: 1px solid rgba(147, 180, 255, 0.12);
+    border-radius: 18px;
+
+    box-shadow: 0 10px 35px rgba(0, 0, 0, 0.08);
+
+    transition:
+        transform 0.35s ease,
+        border-color 0.35s ease,
+        box-shadow 0.35s ease;
+}
+
+.services-section .service-card:hover {
+    transform: translateY(-8px);
+
+    border-color: rgba(147, 180, 255, 0.45);
+
+    box-shadow:
+        0 25px 55px rgba(0, 0, 0, 0.22),
+        0 0 35px rgba(37, 99, 235, 0.08);
+}
+
+/* CARD ACCENT */
+
+.services-section .service-card::after {
+    background: linear-gradient(
+        90deg,
+        #2563EB,
+        #93B4FF
+    );
+}
+
+/* SERVICE NUMBER */
+
+.services-section .service-number {
+    color: rgba(255, 255, 255, 0.25);
+    font-size: 12px;
+}
+
+/* ICON */
+
+.services-section .service-icon {
+    width: 66px;
+    height: 66px;
+    margin-bottom: 32px;
+
+    background: rgba(37, 99, 235, 0.12);
+    border: 1px solid rgba(147, 180, 255, 0.3);
+    border-radius: 17px;
+}
+
+.services-section .service-icon svg {
+    stroke: #93B4FF;
+}
+
+.services-section .service-card:hover .service-icon {
+    background: rgba(37, 99, 235, 0.2);
+
+    box-shadow: 0 0 30px rgba(37, 99, 235, 0.12);
+}
+
+/* TEXT */
+
+.services-section .service-card h3 {
+    color: #FFFFFF;
+    font-size: 21px;
+    font-weight: 700;
+    letter-spacing: -0.5px;
+}
+
+.services-section .service-card p {
+    color: #A9B8CE;
+    font-size: 14px;
+    line-height: 1.8;
+}
+
+/* SERVICE LINK */
+
+.services-section .service-link {
+    color: #FFFFFF;
+    font-size: 11px;
+    letter-spacing: 1.2px;
+}
+
+.services-section .service-link span {
+    color: #93B4FF;
+}
+
+/* RESPONSIVE */
+
+@media (max-width: 800px) {
+    .services-section {
+        padding: 100px 5% 110px;
+    }
+}
+
+@media (max-width: 550px) {
+    .services-section .section-heading h2 {
+        font-size: 38px;
+        letter-spacing: -1.5px;
+    }
+
+    .services-section .service-card {
+        min-height: 360px;
+        padding: 30px 26px;
+    }
+}
+
+@media (prefers-reduced-motion: reduce) {
+    .services-section .service-card,
+    .services-section .service-icon {
+        transition: none;
+    }
+
+    .services-section .service-card:hover {
+        transform: none;
+    }
+}
+
+/* ========================================
+   ACT DIGITAL — PREMIUM ACT METHOD V2
+======================================== */
+
+.act-method {
+    background: #F7F9FC;
+    color: #172033;
+    border-top: 1px solid #E8EDF5;
+}
+
+/* HEADING */
+
+.act-method .section-label {
+    color: #2563EB;
+}
+
+.act-method-heading h2 {
+    color: #0B1220;
+}
+
+.act-method-heading h2 span {
+    background: linear-gradient(
+        90deg,
+        #2563EB,
+        #638CFF
+    );
+
+    -webkit-background-clip: text;
+    background-clip: text;
+    color: transparent;
+}
+
+.act-method-heading > p:last-child {
+    color: #64748B;
+}
+
+/* CARDS */
+
+.act-step {
+    background: #FFFFFF;
+    border: 1px solid #DCE4EF;
+    box-shadow: 0 18px 50px rgba(15, 23, 42, 0.04);
+}
+
+.act-step:hover {
+    border-color: rgba(37, 99, 235, 0.35);
+    box-shadow: 0 25px 65px rgba(37, 99, 235, 0.09);
+}
+
+.act-step::before {
+    background: linear-gradient(
+        180deg,
+        #2563EB,
+        #93B4FF
+    );
+}
+
+.act-step::after {
+    background: rgba(37, 99, 235, 0.06);
+}
+
+/* LARGE A, C, T LETTERS */
+
+.act-letter {
+    background: linear-gradient(
+        145deg,
+        #0B1220 0%,
+        #2563EB 65%,
+        #93B4FF 100%
+    );
+
+    -webkit-background-clip: text;
+    background-clip: text;
+    color: transparent;
+}
+
+/* STEP CONTENT */
+
+.act-step-number {
+    color: #2563EB;
+}
+
+.act-step-top h3 {
+    color: #2563EB;
+}
+
+.act-step-content h4 {
+    color: #172033;
+}
+
+.act-step-content > p {
+    color: #64748B;
+}
+
+/* TAGS */
+
+.act-tags span {
+    background: #EFF4FF;
+    border: 1px solid #DCE7FF;
+    color: #35568D;
+}
+
+/* CONNECTORS */
+
+.act-connector span {
+    background: linear-gradient(
+        90deg,
+        transparent,
+        rgba(37, 99, 235, 0.35)
+    );
+}
+
+.act-connector span:last-child {
+    background: linear-gradient(
+        90deg,
+        rgba(37, 99, 235, 0.35),
+        transparent
+    );
+}
+
+.act-connector div {
+    background: #FFFFFF;
+    border: 1px solid #C9D9F5;
+    color: #2563EB;
+    box-shadow: 0 5px 20px rgba(37, 99, 235, 0.07);
+}
+
+/* CLOSING STATEMENT */
+
+.act-method-closing p {
+    color: #64748B;
+}
+
+.act-method-closing p span,
+.act-method-closing strong {
+    color: #2563EB;
+}
+
+.act-method-closing h3 {
+    color: #0B1220;
+}
+
+/* ACCESSIBILITY */
+
+@media (prefers-reduced-motion: reduce) {
+    .act-step,
+    .act-letter {
+        transition: none;
+    }
+
+    .act-step:hover,
+    .act-step:hover .act-letter {
+        transform: none;
+    }
+}
+
+/* ========================================
+   ACT DIGITAL — PREMIUM PORTFOLIO V2
+======================================== */
+
+.work-section {
+    padding: 150px 5%;
+
+    background:
+        radial-gradient(
+            ellipse at 75% 30%,
+            rgba(37, 99, 235, 0.12),
+            transparent 50%
+        ),
+        #0B1220;
+
+    border-top: 1px solid rgba(255,255,255,0.06);
+}
+
+/* SECTION HEADING */
+
+.work-section .section-label {
+    color: #93B4FF;
+    letter-spacing: 3px;
+}
+
+.work-heading h2 {
+    color: #FFFFFF;
+    font-size: clamp(44px, 5.5vw, 76px);
+    letter-spacing: -3px;
+}
+
+.work-heading h2 span {
+    color: #93B4FF;
+}
+
+.work-heading-text {
+    color: #A9B8CE;
+    font-size: 17px;
+    line-height: 1.8;
+}
+
+/* FEATURED PROJECT CARD */
+
+.featured-project {
+    padding: 60px;
+    gap: 65px;
+
+    background: linear-gradient(
+        145deg,
+        #19263B,
+        #101B2D
+    );
+
+    border: 1px solid rgba(147,180,255,0.14);
+    border-radius: 26px;
+
+    box-shadow: 0 35px 100px rgba(0,0,0,0.18);
+
+    transition:
+        border-color 0.4s ease,
+        box-shadow 0.4s ease;
+}
+
+.featured-project:hover {
+    border-color: rgba(147,180,255,0.35);
+
+    box-shadow:
+        0 45px 110px rgba(0,0,0,0.3),
+        0 0 55px rgba(37,99,235,0.06);
+}
+
+/* BROWSER MOCKUP */
+
+.browser-window {
+    border: 1px solid rgba(255,255,255,0.14);
+    border-radius: 16px;
+
+    box-shadow: 0 35px 85px rgba(0,0,0,0.35);
+}
+
+.browser-top {
+    background: #202F46;
+}
+
+.browser-content {
+    background:
+        radial-gradient(
+            circle at 50% 45%,
+            rgba(37,99,235,0.18),
+            transparent 55%
+        ),
+        linear-gradient(
+            135deg,
+            #14243C,
+            #0B1220
+        );
+}
+
+.browser-brand span {
+    color: #93B4FF;
+}
+
+.browser-button {
+    background: #2563EB;
+    border-radius: 8px;
+}
+
+/* PROJECT DETAILS */
+
+.project-type {
+    color: #93B4FF;
+}
+
+.project-info h3 {
+    color: #FFFFFF;
+}
+
+.project-description {
+    color: #A9B8CE;
+}
+
+.project-details span {
+    color: #93A5BF;
+}
+
+.project-details strong {
+    color: #FFFFFF;
+}
+
+.project-link {
+    color: #FFFFFF;
+}
+
+.project-link span {
+    border-color: rgba(147,180,255,0.4);
+    color: #93B4FF;
+}
+
+/* FUTURE PROJECTS */
+
+.future-projects p {
+    color: #93A5BF;
+}
+
+.future-projects span {
+    color: #93B4FF;
+}
+
+/* RESPONSIVE */
+
+@media (max-width: 1050px) {
+    .featured-project {
+        padding: 40px;
+        gap: 45px;
+    }
+}
+
+@media (max-width: 650px) {
+    .work-section {
+        padding: 105px 5%;
+    }
+
+    .featured-project {
+        padding: 25px 20px 40px;
+        border-radius: 18px;
+    }
+
+    .work-heading h2 {
+        font-size: 42px;
+        letter-spacing: -2px;
+    }
+}
+
+@media (prefers-reduced-motion: reduce) {
+    .featured-project {
+        transition: none;
+    }
+}
+
+/* ========================================
+   ACT DIGITAL — PROJECT STATUS BADGE
+======================================== */
+
+.project-info .project-status {
+    display: inline-flex;
+    align-items: center;
+    gap: 9px;
+
+    width: fit-content;
+    margin: 18px 0 14px;
+    padding: 9px 15px;
+
+    background: rgba(245, 158, 11, 0.08);
+    border: 1px solid rgba(245, 158, 11, 0.3);
+    border-radius: 100px;
+
+    color: #FBBF24;
+    font-size: 10px;
+    font-weight: 800;
+    letter-spacing: 1.5px;
+    line-height: 1.4;
+}
+
+/* STATUS DOT */
+
+.project-info .project-status-dot {
+    display: inline-block;
+    width: 8px;
+    height: 8px;
+    flex-shrink: 0;
+
+    background: #FBBF24;
+    border-radius: 50%;
+
+    box-shadow: 0 0 0 4px rgba(245, 158, 11, 0.12);
+}
+
+/* PROJECT DESCRIPTION */
+
+.project-info .project-description {
+    color: #A9B8CE;
+    line-height: 1.85;
+}
+
+/* MOBILE */
+
+@media (max-width: 650px) {
+    .project-info .project-status {
+        margin: 15px 0 12px;
+        padding: 8px 12px;
+        font-size: 9px;
+    }
+}
+
+/* ========================================
+   ACT DIGITAL — PREMIUM FINAL CTA V2
+======================================== */
+
+.main-cta {
+    position: relative;
+    isolation: isolate;
+    overflow: hidden;
+    padding: 150px 5% 140px;
+
+    background:
+        radial-gradient(
+            ellipse at 50% 35%,
+            rgba(37, 99, 235, 0.19),
+            transparent 55%
+        ),
+        linear-gradient(
+            180deg,
+            #101B2E 0%,
+            #080E19 100%
+        );
+
+    border-top: 1px solid rgba(147, 180, 255, 0.12);
+}
+
+/* SOFT BACKGROUND LIGHTING */
+
+.main-cta .cta-glow {
+    pointer-events: none;
+    opacity: 0.45;
+}
+
+.main-cta .cta-grid {
+    pointer-events: none;
+    opacity: 0.12;
+}
+
+/* CONTENT */
+
+.main-cta .section-container {
+    position: relative;
+    z-index: 2;
+}
+
+.main-cta .cta-content {
+    max-width: 1050px;
+    margin: 0 auto;
+    text-align: center;
+}
+
+.main-cta .section-label {
+    color: #93B4FF;
+    font-size: 12px;
+    font-weight: 800;
+    letter-spacing: 3.5px;
+}
+
+/* MAIN HEADLINE */
+
+.main-cta .cta-content h2 {
+    margin: 25px auto 30px;
+    max-width: 1000px;
+
+    color: #FFFFFF;
+    font-size: clamp(48px, 7vw, 100px);
+    font-weight: 800;
+    line-height: 1.08;
+    letter-spacing: -3.5px;
+}
+
+.main-cta .cta-content h2 span {
+    display: block;
+
+    background: linear-gradient(
+        90deg,
+        #FFFFFF 0%,
+        #93B4FF 55%,
+        #4F83FF 100%
+    );
+
+    -webkit-background-clip: text;
+    background-clip: text;
+    -webkit-text-fill-color: transparent;
+    color: transparent;
+}
+
+/* LET'S ACT STATEMENT */
+
+.main-cta .cta-act-line {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 24px;
+    margin: 35px auto;
+}
+
+.main-cta .cta-act-line h3 {
+    color: #DCE7F7;
+    font-size: clamp(17px, 2vw, 24px);
+    font-weight: 500;
+    line-height: 1.5;
+}
+
+.main-cta .cta-act-line h3 strong {
+    color: #93B4FF;
+    font-weight: 800;
+}
+
+.main-cta .cta-line {
+    width: 65px;
+    height: 1px;
+    background: linear-gradient(
+        90deg,
+        transparent,
+        rgba(147, 180, 255, 0.55)
+    );
+}
+
+.main-cta .cta-line:last-child {
+    transform: rotate(180deg);
+}
+
+/* DESCRIPTION */
+
+.main-cta .cta-description {
+    max-width: 720px;
+    margin: 30px auto 0;
+
+    color: #A9B8CE;
+    font-size: 18px;
+    line-height: 1.9;
+}
+
+/* ACTIONS */
+
+.main-cta .cta-actions {
+    display: flex;
+    flex-wrap: wrap;
+    align-items: center;
+    justify-content: center;
+    gap: 25px;
+
+    margin-top: 45px;
+}
+
+.main-cta .cta-primary {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    gap: 22px;
+
+    padding: 19px 32px;
+
+    background: #2563EB;
+    border: 1px solid #2563EB;
+    border-radius: 10px;
+
+    color: #FFFFFF;
+    font-size: 15px;
+    font-weight: 700;
+    text-decoration: none;
+
+    box-shadow: 0 15px 45px rgba(37, 99, 235, 0.28);
+
+    transition:
+        background 0.3s ease,
+        transform 0.3s ease,
+        box-shadow 0.3s ease;
+}
+
+.main-cta .cta-primary:hover {
+    background: #1D4ED8;
+    transform: translateY(-4px);
+    box-shadow: 0 22px 55px rgba(37, 99, 235, 0.38);
+}
+
+.main-cta .cta-primary span {
+    font-size: 20px;
+    transition: transform 0.3s ease;
+}
+
+.main-cta .cta-primary:hover span {
+    transform: translateX(5px);
+}
+
+/* EMAIL LINK */
+
+.main-cta .cta-email {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    gap: 10px;
+
+    color: #D5E0EF;
+    font-size: 14px;
+    text-decoration: none;
+
+    transition: color 0.3s ease;
+}
+
+.main-cta .cta-email:hover {
+    color: #93B4FF;
+}
+
+.main-cta .cta-email-icon {
+    color: #93B4FF;
+    font-size: 19px;
+}
+
+/* REASSURANCE */
+
+.main-cta .cta-reassurance {
+    max-width: 550px;
+    margin: 24px auto 0;
+
+    color: #879BB8;
+    font-size: 13px;
+    line-height: 1.7;
+}
+
+/* SERVICE LABELS */
+
+.main-cta .cta-services {
+    display: flex;
+    flex-wrap: wrap;
+    align-items: center;
+    justify-content: center;
+    gap: 18px;
+
+    margin-top: 75px;
+    padding-top: 35px;
+
+    border-top: 1px solid rgba(255, 255, 255, 0.09);
+}
+
+.main-cta .cta-services span {
+    color: #8195B1;
+    font-size: 12px;
+    font-weight: 600;
+    letter-spacing: 0.3px;
+}
+
+.main-cta .cta-services i {
+    display: block;
+    width: 4px;
+    height: 4px;
+    flex-shrink: 0;
+
+    background: #4F83FF;
+    border-radius: 50%;
+}
+
+/* MOBILE RESPONSIVENESS */
+
+@media (max-width: 650px) {
+    .main-cta {
+        padding: 105px 6% 90px;
+    }
+
+    .main-cta .section-label {
+        font-size: 10px;
+        letter-spacing: 2px;
+    }
+
+    .main-cta .cta-content h2 {
+        font-size: clamp(43px, 10vw, 62px);
+        letter-spacing: -2px;
+    }
+
+    .main-cta .cta-act-line {
+        gap: 12px;
+        margin: 30px auto;
+    }
+
+    .main-cta .cta-line {
+        width: 25px;
+    }
+
+    .main-cta .cta-act-line h3 {
+        font-size: 16px;
+    }
+
+    .main-cta .cta-description {
+        font-size: 16px;
+        line-height: 1.8;
+    }
+
+    .main-cta .cta-actions {
+        flex-direction: column;
+        gap: 25px;
+    }
+
+    .main-cta .cta-primary {
+        width: 100%;
+        max-width: 350px;
+    }
+
+    .main-cta .cta-services {
+        gap: 12px;
+        margin-top: 60px;
+    }
+
+    .main-cta .cta-services span {
+        font-size: 10px;
+    }
+}
+
+@media (prefers-reduced-motion: reduce) {
+    .main-cta .cta-primary,
+    .main-cta .cta-primary span {
+        transition: none;
+    }
+
+    .main-cta .cta-primary:hover,
+    .main-cta .cta-primary:hover span {
+        transform: none;
+    }
+}
+
+/* ========================================
+   ACT DIGITAL — REFINED HEADING SIZES
+======================================== */
+
+/* HERO HEADING */
+
+.hero h1 {
+    font-size: clamp(38px, 4.5vw, 66px);
+    line-height: 1.15;
+    letter-spacing: -2px;
+}
+
+/* WEBSITE SHOWCASE HEADING */
+
+.showcase-heading h2 {
+    font-size: clamp(32px, 4vw, 52px);
+    line-height: 1.18;
+    letter-spacing: -1.5px;
+}
+
+/* SERVICES HEADING */
+
+.services-section .section-heading h2 {
+    font-size: clamp(32px, 4vw, 52px);
+    line-height: 1.18;
+    letter-spacing: -1.5px;
+}
+
+/* ACT METHOD HEADING */
+
+.act-method .act-method-heading h2 {
+    font-size: clamp(32px, 4vw, 52px);
+    line-height: 1.18;
+    letter-spacing: -1.5px;
+}
+
+/* PORTFOLIO HEADING */
+
+.work-section .work-heading h2 {
+    font-size: clamp(32px, 4vw, 52px);
+    line-height: 1.18;
+    letter-spacing: -1.5px;
+}
+
+/* FINAL CTA HEADING */
+
+.main-cta .cta-content h2 {
+    font-size: clamp(38px, 4.5vw, 64px);
+    line-height: 1.15;
+    letter-spacing: -2px;
+}
+
+/* MOBILE */
+
+@media (max-width: 650px) {
+
+    .hero h1 {
+        font-size: clamp(34px, 8vw, 44px);
+        letter-spacing: -1px;
+    }
+
+    .showcase-heading h2,
+    .services-section .section-heading h2,
+    .act-method .act-method-heading h2,
+    .work-section .work-heading h2 {
+        font-size: clamp(30px, 7vw, 38px);
+        letter-spacing: -1px;
+    }
+
+    .main-cta .cta-content h2 {
+        font-size: clamp(34px, 8vw, 44px);
+        letter-spacing: -1px;
+    }
+}
+
+/* ========================================
+   ACT DIGITAL — GLOBAL HEADING SIZES
+======================================== */
+
+/* Main page headings */
+body h1 {
+    font-size: clamp(36px, 4vw, 58px);
+    line-height: 1.15;
+    letter-spacing: -1.5px;
+}
+
+/* Section headings */
+body h2 {
+    font-size: clamp(30px, 3vw, 44px);
+    line-height: 1.2;
+    letter-spacing: -1px;
+}
+
+/* Smaller headings */
+body h3 {
+    font-size: clamp(20px, 2vw, 26px);
+    line-height: 1.3;
+    letter-spacing: -0.5px;
+}
+
+/* Mobile */
+@media (max-width: 650px) {
+
+    body h1 {
+        font-size: 36px;
+        letter-spacing: -1px;
+    }
+
+    body h2 {
+        font-size: 30px;
+        letter-spacing: -0.5px;
+    }
+
+    body h3 {
+        font-size: 20px;
+    }
+}
+
+/* ========================================
+   ACT DIGITAL — SERVICE PAGE HEADING FIX
+======================================== */
+
+/* Reduce the main heading on service pages */
+
+body .service-hero h1,
+body .service-page-hero h1,
+body .service-hero-title,
+body .service-page-title {
+    font-size: clamp(36px, 3.5vw, 54px) !important;
+    line-height: 1.15 !important;
+    letter-spacing: -1.5px !important;
+}
+
+/* Make coloured heading text match */
+
+body .service-hero h1 span,
+body .service-page-hero h1 span,
+body .service-hero-title span,
+body .service-page-title span {
+    font-size: inherit !important;
+    line-height: inherit !important;
+    letter-spacing: inherit !important;
+}
+
+/* Mobile */
+
+@media (max-width: 650px) {
+
+    body .service-hero h1,
+    body .service-page-hero h1,
+    body .service-hero-title,
+    body .service-page-title {
+        font-size: 36px !important;
+        line-height: 1.2 !important;
+        letter-spacing: -1px !important;
+    }
+}
+
+/* ========================================
+   ACT DIGITAL — ALL SERVICE PAGE H1 FIX
+======================================== */
+
+/* Service page headings, excluding homepage hero */
+body:has(.service-page-header) main h1 {
+    font-size: clamp(36px, 3.5vw, 54px) !important;
+    line-height: 1.15 !important;
+    letter-spacing: -1.5px !important;
+}
+
+/* Coloured second line */
+body:has(.service-page-header) main h1 span {
+    font-size: inherit !important;
+    line-height: inherit !important;
+    letter-spacing: inherit !important;
+}
+
+/* Mobile */
+@media (max-width: 650px) {
+    body:has(.service-page-header) main h1 {
+        font-size: 36px !important;
+        line-height: 1.2 !important;
+        letter-spacing: -1px !important;
+    }
+}
+
+/* ========================================
+   ACT DIGITAL — SECTION SEPARATION
+======================================== */
+
+/* SELECTED WORK — DARK NAVY */
+
+.work-section {
+    position: relative;
+    background:
+        radial-gradient(
+            ellipse at 75% 30%,
+            rgba(37, 99, 235, 0.12),
+            transparent 50%
+        ),
+        #0B1220;
+    border-bottom: 1px solid rgba(255,255,255,0.08);
+}
+
+/* HOW WE WORK — LIGHT BACKGROUND */
+
+.process-section {
+    position: relative;
+    background: #F7F9FC;
+    color: #172033;
+    border-top: 1px solid #DCE4EF;
+    border-bottom: 1px solid #DCE4EF;
+}
+
+/* HOW WE WORK — HEADING AND DESCRIPTION */
+
+.process-section h2,
+.process-section h3,
+.process-section h4 {
+    color: #172033;
+}
+
+.process-section .section-label {
+    color: #2563EB;
+}
+
+.process-section p {
+    color: #64748B;
+}
+
+/* HOW WE WORK — CARDS */
+
+.process-section .process-card,
+.process-section .process-step {
+    background: #FFFFFF;
+    border-color: #DCE4EF;
+    box-shadow: 0 12px 35px rgba(15,23,42,0.05);
+}
+
+/* FINAL CTA — DEEP DARK NAVY */
+
+.main-cta {
+    position: relative;
+    background:
+        radial-gradient(
+            ellipse at 50% 35%,
+            rgba(37, 99, 235, 0.19),
+            transparent 55%
+        ),
+        linear-gradient(
+            180deg,
+            #101B2E 0%,
+            #080E19 100%
+        );
+    border-top: 1px solid rgba(147,180,255,0.15);
+}
+
+/* ========================================
+   ACT DIGITAL — HOW WE WORK LAYOUT FIX
+======================================== */
+
+/* Rounded section container */
+
+.process-section {
+    position: relative;
+    width: calc(100% - 40px);
+    max-width: 1400px;
+
+    margin: 35px auto;
+    padding: 100px 55px 90px;
+
+    background: #F7F9FC;
+    border: 1px solid #DCE4EF;
+    border-radius: 24px;
+
+    overflow: hidden;
+}
+
+/* Give heading and description breathing room */
+
+.process-section .section-container {
+    width: 100%;
+    max-width: 1250px;
+    margin: 0 auto;
+}
+
+/* Ensure headings don't touch the edges */
+
+.process-section h2 {
+    color: #172033;
+    line-height: 1.2;
+}
+
+/* Improve paragraph readability */
+
+.process-section p {
+    line-height: 1.8;
+}
+
+/* Mobile layout */
+
+@media (max-width: 768px) {
+
+    .process-section {
+        width: calc(100% - 24px);
+        margin: 20px auto;
+        padding: 65px 22px;
+
+        border-radius: 18px;
+    }
+}
+
+@media (max-width: 480px) {
+
+    .process-section {
+        padding: 55px 18px;
+        border-radius: 16px;
+    }
+}
+
+/* ========================================
+   ACT DIGITAL — PROCESS WIDTH FIX
+======================================== */
+
+.process-section {
+    box-sizing: border-box;
+
+    width: 100%;
+    max-width: none;
+
+    margin: 35px 0;
+    padding: 100px max(55px, calc((100% - 1250px) / 2));
+
+    border-radius: 24px;
+}
+
+/* MOBILE */
+
+@media (max-width: 768px) {
+    .process-section {
+        width: 100%;
+        margin: 25px 0;
+        padding: 65px 24px;
+        border-radius: 18px;
+    }
+}
+
+/* ========================================
+   HOW WE WORK — FULL WIDTH FIX
+======================================== */
+
+.process-section {
+    box-sizing: border-box;
+    width: 100%;
+    max-width: none;
+    margin: 35px 0;
+    padding: 100px max(55px, calc((100% - 1250px) / 2));
+    border-radius: 24px;
+}
+
+@media (max-width: 768px) {
+    .process-section {
+        width: 100%;
+        margin: 25px 0;
+        padding: 65px 24px;
+        border-radius: 18px;
+    }
+}
+
+/* ========================================
+   HOW WE WORK — ROUNDED CORNERS
+======================================== */
+
+.process-section {
+    border-radius: 28px !important;
+    overflow: hidden;
+}
+
+/* Mobile */
+@media (max-width: 768px) {
+    .process-section {
+        border-radius: 18px !important;
+    }
+}
+
+/* ========================================
+   ACT DIGITAL — FINAL CTA ROUNDED CORNERS
+======================================== */
+
+.main-cta {
+    border-radius: 28px !important;
+    overflow: hidden;
+}
+
+/* Mobile */
+@media (max-width: 768px) {
+    .main-cta {
+        border-radius: 18px !important;
+    }
+}
+
+/* =========================================
+   ACT SOFTWARE SOLUTIONS
+========================================= */
+
+.software-section {
+    position: relative;
+    padding: 110px 24px;
+    background: linear-gradient(
+        145deg,
+        #071326 0%,
+        #0d2040 55%,
+        #102c54 100%
+    );
+    overflow: hidden;
+}
+
+.software-heading {
+    max-width: 780px;
+    margin: 0 auto 55px;
+    text-align: center;
+}
+
+.software-heading .section-label {
+    color: #55b8ff;
+    letter-spacing: 3px;
+}
+
+.software-heading h2 {
+    margin: 18px 0 22px;
+    color: #ffffff;
+    font-size: clamp(32px, 4vw, 52px);
+    line-height: 1.15;
+}
+
+.software-heading h2 span {
+    display: block;
+    color: #55b8ff;
+}
+
+.software-heading .section-intro {
+    display: block;
+    width: 100%;
+    max-width: 720px;
+    margin: 0 auto;
+    color: #b8c9df;
+    font-size: 17px;
+    line-height: 1.8;
+    text-align: center;
+}
+
+.software-grid {
+    display: grid;
+    grid-template-columns: repeat(3, minmax(0, 1fr));
+    gap: 24px;
+    max-width: 1200px;
+    margin: 0 auto;
+}
+
+.software-card {
+    position: relative;
+    display: flex;
+    flex-direction: column;
+    padding: 36px 30px;
+    border: 1px solid rgba(85, 184, 255, 0.2);
+    border-radius: 20px;
+    background: rgba(255, 255, 255, 0.045);
+    transition:
+        transform 0.3s ease,
+        border-color 0.3s ease,
+        box-shadow 0.3s ease;
+}
+
+.software-card:hover {
+    transform: translateY(-7px);
+    border-color: rgba(85, 184, 255, 0.6);
+    box-shadow: 0 20px 50px rgba(0, 0, 0, 0.25);
+}
+
+.software-status {
+    align-self: flex-start;
+    padding: 7px 12px;
+    border: 1px solid rgba(85, 184, 255, 0.3);
+    border-radius: 30px;
+    background: rgba(85, 184, 255, 0.1);
+    color: #77c9ff;
+    font-size: 10px;
+    font-weight: 700;
+    letter-spacing: 1.5px;
+}
+
+.software-icon {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    width: 62px;
+    height: 62px;
+    margin: 32px 0 24px;
+    border-radius: 16px;
+    background: linear-gradient(135deg, #1689eb, #55b8ff);
+    color: #ffffff;
+    font-size: 21px;
+    font-weight: 800;
+}
+
+.software-card h3 {
+    margin: 0 0 16px;
+    color: #ffffff;
+    font-size: 25px;
+}
+
+.software-card > p {
+    flex-grow: 1;
+    margin: 0 0 28px;
+    color: #b8c9df;
+    font-size: 15px;
+    line-height: 1.8;
+}
+
+.software-tags {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 9px;
+}
+
+.software-tags span {
+    padding: 8px 12px;
+    border-radius: 8px;
+    background: rgba(85, 184, 255, 0.1);
+    color: #a8d9ff;
+    font-size: 12px;
+}
+
+.software-disclaimer {
+    max-width: 750px;
+    margin: 38px auto 0;
+    color: #8fa6c3;
+    font-size: 13px;
+    line-height: 1.7;
+    text-align: center;
+}
+
+/* Tablet */
+@media (max-width: 950px) {
+    .software-grid {
+        grid-template-columns: repeat(2, minmax(0, 1fr));
+    }
+}
+
+/* Mobile */
+@media (max-width: 650px) {
+    .software-section {
+        padding: 75px 20px;
+    }
+
+    .software-grid {
+        grid-template-columns: 1fr;
+    }
+
+    .software-card {
+        padding: 30px 24px;
+    }
+
+    .software-heading {
+        margin-bottom: 35px;
+    }
+}
+
+/* =========================================
+   SOFTWARE CARD ALIGNMENT FIX
+========================================= */
+
+.software-card {
+    display: flex;
+    flex-direction: column;
+    align-items: flex-start;
+    height: 100%;
+}
+
+.software-status {
+    margin-bottom: 0;
+}
+
+.software-icon {
+    flex-shrink: 0;
+    margin-top: 32px;
+    margin-bottom: 24px;
+}
+
+.software-card h3 {
+    min-height: 32px;
+    margin-bottom: 16px;
+}
+
+.software-card > p {
+    flex: 1;
+    width: 100%;
+    margin-bottom: 28px;
+}
+
+.software-tags {
+    margin-top: auto;
+    width: 100%;
+    align-items: center;
+}
+
+/* Keep cards consistent on smaller screens */
+
+@media (max-width: 650px) {
+    .software-card h3 {
+        min-height: auto;
+    }
+
+    .software-card > p {
+        flex-grow: 0;
+    }
+
+    .software-tags {
+        margin-top: 0;
+    }
+}
+
+/* ========================================
+   BUSINESS AUTOMATION DASHBOARD PREVIEW
+======================================== */
+
+.automation-dashboard-cards {
+    display: grid;
+    grid-template-columns: repeat(3, minmax(0, 1fr));
+    gap: 10px;
+    margin-top: 18px;
+}
+
+.automation-dashboard-cards .automation-dashboard-card {
+    min-width: 0;
+    min-height: 105px;
+    padding: 14px 10px;
+    border-radius: 12px;
+    background: linear-gradient(
+        145deg,
+        #102c50,
+        #07182d
+    );
+    border: 1px solid rgba(83, 165, 255, 0.25);
+
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    gap: 8px;
+    text-align: left;
+}
+
+.automation-dashboard-card span {
+    color: #91b9e6;
+    font-size: 9px;
+    font-weight: 700;
+    letter-spacing: 0.5px;
+    line-height: 1.4;
+}
+
+.automation-dashboard-card strong {
+    color: #ffffff;
+    font-size: 24px;
+    font-weight: 800;
+    line-height: 1.1;
+}
+
+.automation-dashboard-card small {
+    color: #a4b5cb;
+    font-size: 9px;
+    line-height: 1.4;
+}
+
+/* Smaller screens */
+
+@media (max-width: 550px) {
+
+    .automation-dashboard-cards {
+        gap: 6px;
+    }
+
+    .automation-dashboard-cards .automation-dashboard-card {
+        padding: 10px 7px;
+        min-height: 95px;
+    }
+
+    .automation-dashboard-card span {
+        font-size: 8px;
+    }
+
+    .automation-dashboard-card strong {
+        font-size: 19px;
+    }
+
+    .automation-dashboard-card small {
+        font-size: 8px;
+    }
+}
+
+/* ========================================
+   AUTOMATION DASHBOARD - OVERLAP FIX
+======================================== */
+
+.service-hero-visual:has(.automation-dashboard-cards)
+.service-floating-card-one {
+    top: 65px;
+    bottom: auto;
+    left: -30px;
+}
+
+@media (max-width: 550px) {
+    .service-hero-visual:has(.automation-dashboard-cards)
+    .service-floating-card-one {
+        left: 0;
+        top: 45px;
+        bottom: auto;
+    }
+}
+
+/* ========================================
+   BUSINESS AUTOMATION - CONNECTED CALLOUTS
+======================================== */
+
+@media (min-width: 951px) {
+
+    .service-hero-visual:has(.automation-dashboard-cards) {
+        overflow: visible;
+    }
+
+    /* Left callout */
+
+    .service-hero-visual:has(.automation-dashboard-cards)
+    .service-floating-card-one {
+        top: 28%;
+        bottom: auto;
+        left: -110px;
+        right: auto;
+        z-index: 5;
+    }
+
+    /* Right callout */
+
+    .service-hero-visual:has(.automation-dashboard-cards)
+    .service-floating-card-two {
+        top: 28%;
+        bottom: auto;
+        right: -110px;
+        left: auto;
+        z-index: 5;
+    }
+
+    /* Connector lines */
+
+    .service-hero-visual:has(.automation-dashboard-cards)
+    .service-floating-card-one::after,
+    .service-hero-visual:has(.automation-dashboard-cards)
+    .service-floating-card-two::after {
+        content: "";
+        position: absolute;
+        top: 50%;
+        width: 110px;
+        height: 2px;
+        background: linear-gradient(
+            90deg,
+            #008cff,
+            #00d4ff
+        );
+        box-shadow: 0 0 10px rgba(0, 180, 255, 0.6);
+        z-index: -1;
+    }
+
+    .service-hero-visual:has(.automation-dashboard-cards)
+    .service-floating-card-one::after {
+        left: 100%;
+    }
+
+    .service-hero-visual:has(.automation-dashboard-cards)
+    .service-floating-card-two::after {
+        right: 100%;
+    }
+}
+
+/* ========================================
+   ACT AUTOMATION - PREMIUM FLOATING CARDS
+======================================== */
+
+@media (min-width: 951px) {
+
+    /* Automated card - above Employees Present */
+
+    .service-hero-visual:has(.automation-dashboard-cards)
+    .service-floating-card-one {
+        top: auto;
+        bottom: 145px;
+        left: -95px;
+        right: auto;
+        z-index: 10;
+    }
+
+    /* Connected card - right side */
+
+    .service-hero-visual:has(.automation-dashboard-cards)
+    .service-floating-card-two {
+        top: 28%;
+        bottom: auto;
+        right: -110px;
+        left: auto;
+        z-index: 10;
+    }
+
+    /* Left connector line */
+
+    .service-hero-visual:has(.automation-dashboard-cards)
+    .service-floating-card-one::after {
+        top: 50%;
+        left: 100%;
+        right: auto;
+        width: 95px;
+    }
+}
+
+/* Premium glass effect - automation page only */
+
+.service-hero-visual:has(.automation-dashboard-cards)
+.service-floating-card {
+    background: linear-gradient(
+        135deg,
+        rgba(13, 38, 65, 0.96),
+        rgba(3, 16, 31, 0.98)
+    );
+
+    border: 1px solid rgba(0, 195, 255, 0.35);
+    border-radius: 12px;
+
+    box-shadow:
+        0 12px 35px rgba(0, 0, 0, 0.35),
+        0 0 20px rgba(0, 153, 255, 0.08);
+
+    backdrop-filter: blur(12px);
+}
+
+/* Improve dashboard card appearance */
+
+.automation-dashboard-cards .automation-dashboard-card {
+    background: linear-gradient(
+        145deg,
+        #12345c,
+        #071a30
+    );
+
+    border: 1px solid rgba(70, 165, 255, 0.35);
+
+    box-shadow:
+        0 8px 25px rgba(0, 0, 0, 0.18),
+        inset 0 1px 0 rgba(255, 255, 255, 0.05);
+
+    transition:
+        transform 0.3s ease,
+        border-color 0.3s ease,
+        box-shadow 0.3s ease;
+}
+
+.automation-dashboard-cards .automation-dashboard-card:hover {
+    transform: translateY(-4px);
+    border-color: rgba(0, 210, 255, 0.75);
+
+    box-shadow:
+        0 12px 30px rgba(0, 0, 0, 0.3),
+        0 0 18px rgba(0, 180, 255, 0.15);
+}
+
+/* Business Automation checkbox icon */
+
+.service-option .automation-icon {
+    color: #00c8ff;
+}
