@@ -18843,3 +18843,8 @@ body:has(.service-page-header) main h1 span {
 .service-option .automation-icon {
     color: #00c8ff;
 }
+
+/* Business Automation - Blue Lightning Icon */
+.web-solution-card .automation-icon {
+    color: #00c8ff;
+}
